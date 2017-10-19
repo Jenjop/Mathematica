@@ -1,0 +1,1291 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     52200,       1283]
+NotebookOptionsPosition[     50808,       1231]
+NotebookOutlinePosition[     51184,       1247]
+CellTagsIndexPosition[     51141,       1244]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Column", "[", 
+  RowBox[{"{", 
+   RowBox[{"(*", 
+    RowBox[{"d", " ", "=", " ", "default"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dYr1000", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Today", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}], " ", "-", " ", 
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"Today", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "1000"}], "]"}]}], 
+       ")"}], "/", "1000"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dYr100", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Today", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], " ", "-", " ", 
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"Today", "[", 
+             RowBox[{"[", 
+              RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "100"}], "]"}]}], 
+         ")"}], "-", 
+        RowBox[{"(", 
+         RowBox[{"1000", "dYr1000"}], ")"}]}], ")"}], "/", "100"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"dYr10", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Today", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], "-", 
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"Today", "[", 
+             RowBox[{"[", 
+              RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "10"}], "]"}]}], 
+         ")"}], "-", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"1000", "dYr1000"}], " ", "+", " ", 
+          RowBox[{"100", "dYr100"}]}], ")"}]}], ")"}], "/", "10"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"dYr1", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Today", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}], ")"}], "-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"1000", "dYr1000"}], " ", "+", " ", 
+        RowBox[{"100", "dYr100"}], "+", 
+        RowBox[{"10", "dYr10"}]}], ")"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dMonth", "=", 
+     RowBox[{"Today", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dDay1", " ", "=", " ", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"Today", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "3"}], "]"}], "]"}], ",", "10"}], "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"dDay10", "=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Today", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "3"}], "]"}], "]"}], "\[GreaterEqual]", "10"}], 
+       ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Today", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "3"}], "]"}], "]"}], "-", "dDay1"}], ")"}], "/",
+         "10"}], ",", "0"}], "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dHour1", " ", "=", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"DateObject", "[", "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ",", "1", ",", "1"}], "]"}], "]"}], ",", "10"}], 
+      "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dHour10", " ", "=", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"DateObject", "[", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ",", "1", ",", "1"}], "]"}], "]"}], "\[GreaterEqual]", 
+        "10"}], ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"DateObject", "[", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1", ",", "1"}], "]"}], "]"}], "-", "dHour1"}], 
+         ")"}], "/", "10"}], ",", "0"}], "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dMin1", " ", "=", " ", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"DateObject", "[", "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}], ",", "10"}], 
+      "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dMin10", " ", "=", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"DateObject", "[", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}], "\[GreaterEqual]", 
+        "10"}], ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"DateObject", "[", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}], "-", "dMin1"}], 
+         ")"}], "/", "10"}], ",", "0"}], "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dSec1", " ", "=", " ", 
+     RowBox[{"Floor", "@", 
+      RowBox[{"Mod", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"DateObject", "[", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ",", "1", ",", "3"}], "]"}], "]"}], ",", "10"}], 
+       "]"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"dSec10", " ", "=", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"DateObject", "[", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ",", "1", ",", "3"}], "]"}], "]"}], "\[GreaterEqual]", 
+        "10"}], ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"DateObject", "[", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1", ",", "3"}], "]"}], "]"}], "-", "dSec1"}], 
+         ")"}], "/", "10"}], ",", "0"}], "]"}]}]}], "\[IndentingNewLine]", 
+   "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6999315866975083`*^9, 3.699931612705699*^9}, {
+  3.699931673052243*^9, 3.699931675474687*^9}, {3.6999317223875303`*^9, 
+  3.6999317666372147`*^9}, {3.699931804177082*^9, 3.699931917287022*^9}, {
+  3.6999321337338243`*^9, 3.699932215280768*^9}, {3.6999322655004077`*^9, 
+  3.6999325140793905`*^9}, {3.699932728990102*^9, 3.6999327639641113`*^9}, {
+  3.6999330757276864`*^9, 3.699933092560468*^9}, {3.6999333631996784`*^9, 
+  3.699933526775846*^9}, {3.6999335697872715`*^9, 3.699933594217264*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"2"},
+    {"0"},
+    {"1"},
+    {"7"},
+    {"3"},
+    {"1"},
+    {"3"},
+    {"0"},
+    {"0"},
+    {"9"},
+    {"1"},
+    {"4"},
+    {"5.06233451`"}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{{3.699933513875528*^9, 3.69993353250108*^9}, {
+  3.6999335704590616`*^9, 3.6999335946273556`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"results", "[", "date_", "]"}], ":=", 
+  RowBox[{"Button", "[", 
+   RowBox[{"\"\<Return Results\>\"", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookClose", "[", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"CreatePalette", "[", 
+       RowBox[{
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Column", "[", 
+           RowBox[{"{", 
+            RowBox[{"Nothing", ",", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"date", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], ",", "\"\</\>\"", ",", 
+                RowBox[{"date", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], ",", "\"\</\>\"", ",", 
+                RowBox[{"date", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<, \>\"", " ", ",", 
+                RowBox[{"date", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], ",", " ", "\"\<:\>\"", ",", 
+                RowBox[{"date", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}], ",", "\"\<:\>\"", ",", 
+                RowBox[{"date", "[", 
+                 RowBox[{"[", "6", "]"}], "]"}]}], "}"}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Sunrise: \>\"", ",", 
+                RowBox[{
+                 RowBox[{"Sunrise", "[", 
+                  RowBox[{"DateObject", "[", "date", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "1", ",", "1"}], "]"}], "]"}], ",", 
+                "\"\<:\>\"", ",", 
+                RowBox[{
+                 RowBox[{"Sunrise", "[", 
+                  RowBox[{"DateObject", "[", "date", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}]}], "}"}], 
+              "]"}], ",", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Sunset: \>\"", ",", 
+                RowBox[{
+                 RowBox[{"Sunset", "[", 
+                  RowBox[{"DateObject", "[", "date", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "1", ",", "1"}], "]"}], "]"}], ",", 
+                "\"\<:\>\"", ",", 
+                RowBox[{
+                 RowBox[{"Sunset", "[", 
+                  RowBox[{"DateObject", "[", "date", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}]}], "}"}], 
+              "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Moon Phase: \>\"", ",", " ", 
+                RowBox[{"MoonPhase", "[", 
+                 RowBox[{
+                  RowBox[{"DateObject", "[", "date", "]"}], ",", 
+                  "\"\<Name\>\""}], "]"}]}], "}"}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Next Solar Eclipse: \>\"", ",", " ", 
+                RowBox[{"SolarEclipse", "[", 
+                 RowBox[{"DateObject", "[", "date", "]"}], "]"}], ",", " ", 
+                "\"\<which is \>\"", ",", 
+                RowBox[{
+                 RowBox[{"SolarEclipse", "[", 
+                  RowBox[{"DateObject", "[", "date", "]"}], "]"}], "-", 
+                 RowBox[{"DateObject", "[", "date", "]"}]}], " ", ",", 
+                "\"\< days from input date\>\""}], "}"}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Next Lunar Eclipse: \>\"", ",", " ", 
+                RowBox[{"LunarEclipse", "[", 
+                 RowBox[{"DateObject", "[", "date", "]"}], "]"}], ",", " ", 
+                "\"\<which is \>\"", ",", 
+                RowBox[{
+                 RowBox[{"LunarEclipse", "[", 
+                  RowBox[{"DateObject", "[", "date", "]"}], "]"}], "-", 
+                 RowBox[{"DateObject", "[", "date", "]"}]}], " ", ",", 
+                "\"\< days from input date\>\""}], "}"}], "]"}]}], 
+            "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Button", "[", 
+           RowBox[{"\"\<Done\>\"", ",", 
+            RowBox[{"NotebookClose", "[", "]"}]}], "]"}]}], 
+         "\[IndentingNewLine]", "}"}], ",", 
+        RowBox[{"WindowMargins", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"WindowSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"300", ",", "300"}], "}"}]}]}], "]"}]}], 
+     RowBox[{"(*", "EndResult", "*)"}], "\[IndentingNewLine]", "}"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Button", "[", 
+  RowBox[{"\"\<Begin\>\"", ",", 
+   RowBox[{"CreatePalette", "[", 
+    RowBox[{"(*", 
+     RowBox[{"Year", " ", "Palette"}], "*)"}], 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Manipulate", "[", 
+        RowBox[{
+         RowBox[{"Row", "[", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Year: \>\"", ",", 
+            RowBox[{"year", " ", "=", " ", 
+             RowBox[{
+              RowBox[{"1000", "y1000"}], "+", 
+              RowBox[{"100", "y100"}], "+", 
+              RowBox[{"10", "y10"}], "+", "y1"}]}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"y1000", ",", "dYr1000", ",", "\"\<Thousand\>\""}], "}"}],
+            ",", 
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "9"}], "]"}], ",", 
+           RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"y100", ",", "dYr100", ",", "\"\<Hundred\>\""}], "}"}], 
+           ",", 
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "9"}], "]"}], ",", 
+           RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"y10", ",", "dYr10", ",", "\"\<Ten\>\""}], "}"}], ",", 
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "9"}], "]"}], ",", 
+           RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"y1", ",", "dYr1", ",", "\"\<One\>\""}], "}"}], ",", 
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "9"}], "]"}], ",", 
+           RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}]}], "]"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"Button", "[", 
+        RowBox[{"\"\<Select Month\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"NotebookClose", "[", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"CreatePalette", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"(*", 
+               RowBox[{"Month", " ", "Palette"}], "*)"}], 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Manipulate", "[", 
+                RowBox[{
+                 RowBox[{"Column", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Year: \>\"", ",", "year"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Month: \>\"", ",", 
+                    RowBox[{"month", " ", "=", " ", "m"}]}], "}"}], "]"}]}], 
+                   "}"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"m", ",", "dMonth", ",", "\"\<Month\>\""}], "}"}],
+                    ",", 
+                   RowBox[{"Range", "[", 
+                    RowBox[{"1", ",", "12"}], "]"}], ",", 
+                   RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}]}],
+                 "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"Button", "[", 
+                RowBox[{"\"\<Select Day\>\"", ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"NotebookClose", "[", "]"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"CreatePalette", "[", 
+                    RowBox[{"(*", 
+                    RowBox[{"Day", " ", "Palette"}], "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Manipulate", "[", 
+                    RowBox[{
+                    RowBox[{"Column", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Year: \>\"", ",", "year"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Month: \>\"", ",", "month"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Day: \>\"", ",", 
+                    RowBox[{"day", " ", "=", " ", 
+                    RowBox[{
+                    RowBox[{"10", "d10"}], "+", "d1"}]}]}], "}"}], "]"}]}], 
+                    "}"}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"PaneSelector", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"False", "\[Rule]", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d10", ",", "dDay10", ",", "\"\<Ten\>\""}], "}"}],
+                     ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "3"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", 
+                    RowBox[{"True", "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d10", ",", "dDay10", ",", "\"\<Ten\>\""}], "}"}],
+                     ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "2"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}]}], "\[IndentingNewLine]", "}"}], ",", 
+                    RowBox[{"month", "\[Equal]", "2"}]}], "]"}], ",", 
+                    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                    RowBox[{"PaneSelector", "[", 
+                    RowBox[{
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"3", ",", 
+                    RowBox[{"month", "\[Equal]", "2"}], ",", "True", ",", 
+                    RowBox[{"LeapYearQ", "[", "year", "]"}]}], "}"}], 
+                    "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "1"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"3", ",", 
+                    RowBox[{"month", "\[Equal]", "2"}], ",", "False", ",", 
+                    RowBox[{"LeapYearQ", "[", "year", "]"}]}], "}"}], 
+                    "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"{", "0", "}"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"month", "\[Equal]", "2"}], ",", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "1", ",", "3", ",", "5", ",", "7", ",", "8", ",", "10", 
+                    ",", "12"}], "}"}], ",", "month"}], "]"}], ",", 
+                    RowBox[{"LeapYearQ", "[", "year", "]"}]}], "}"}], 
+                    "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"month", "\[Equal]", "2"}], ",", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "1", ",", "3", ",", "5", ",", "7", ",", "8", ",", "10", 
+                    ",", "12"}], "}"}], ",", "month"}], "]"}], ",", 
+                    RowBox[{"LeapYearQ", "[", "year", "]"}]}], "}"}], 
+                    "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"2", ",", "False", ",", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "1", ",", "3", ",", "5", ",", "7", ",", "8", ",", "10", 
+                    ",", "12"}], "}"}], ",", "month"}], "]"}], ",", 
+                    RowBox[{"LeapYearQ", "[", "year", "]"}]}], "}"}], 
+                    "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"2", ",", "True", ",", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "1", ",", "3", ",", "5", ",", "7", ",", "8", ",", "10", 
+                    ",", "12"}], "}"}], ",", "month"}], "]"}], ",", "True"}], 
+                    "}"}], "\[Rule]", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"2", ",", "True", ",", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "1", ",", "3", ",", "5", ",", "7", ",", "8", ",", "10", 
+                    ",", "12"}], "}"}], ",", "month"}], "]"}], ",", "False"}],
+                     "}"}], "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"d1", ",", "dDay1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "8"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}]}], "\[IndentingNewLine]", "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"d10", ",", 
+                    RowBox[{"month", "\[Equal]", "2"}], ",", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "1", ",", "3", ",", "5", ",", "7", ",", "8", ",", "10", 
+                    ",", "12"}], "}"}], ",", "month"}], "]"}], ",", 
+                    RowBox[{"LeapYearQ", "[", "year", "]"}]}], "}"}]}], 
+                    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", "]"}], ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<Select Hour\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"NotebookClose", "[", "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"CreatePalette", "[", 
+                    RowBox[{"(*", 
+                    RowBox[{"Hour", " ", "Palette"}], "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Manipulate", "[", 
+                    RowBox[{
+                    RowBox[{"Column", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Year: \>\"", ",", "year"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Month: \>\"", ",", "month"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Day: \>\"", ",", "day"}], "}"}], "]"}], ",", 
+                    " ", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Hour: \>\"", ",", 
+                    RowBox[{"hour", " ", "=", " ", 
+                    RowBox[{
+                    RowBox[{"10", "h10"}], " ", "+", " ", "h1"}]}]}], "}"}], 
+                    "]"}]}], "}"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"h10", ",", "0", ",", "\"\<Ten\>\""}], "}"}], ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "2"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], 
+                    ",", 
+                    RowBox[{"PaneSelector", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"0", "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"h1", ",", "dHour1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", 
+                    RowBox[{"1", "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"h1", ",", "dHour1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}], ",", 
+                    RowBox[{"2", "\[Rule]", " ", 
+                    RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"h1", ",", "dHour1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "3"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "}"}]}]}]}], "}"}], ",", "h10"}], "]"}]}], "]"}], ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<Select Minute\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"NotebookClose", "[", "]"}], ",", 
+                    RowBox[{"CreatePalette", "[", 
+                    RowBox[{"(*", 
+                    RowBox[{"Minute", " ", "Palette"}], "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Manipulate", "[", 
+                    RowBox[{
+                    RowBox[{"Column", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Year: \>\"", ",", "year"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Month: \>\"", ",", "month"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Day: \>\"", ",", "day"}], "}"}], "]"}], ",", 
+                    " ", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Hour: \>\"", ",", "hour"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Minute: \>\"", ",", 
+                    RowBox[{"minute", " ", "=", 
+                    RowBox[{
+                    RowBox[{"10", "m10"}], "+", "m1"}]}]}], " ", "}"}], 
+                    "]"}]}], "}"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"m10", ",", "dMin10", ",", "\"\<Ten\>\""}], "}"}],
+                     ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "5"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"m1", ",", "dMin1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "\[IndentingNewLine]", "}"}]}], "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<Select Second\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"NotebookClose", "[", "]"}], ",", 
+                    RowBox[{"CreatePalette", "[", 
+                    RowBox[{"(*", 
+                    RowBox[{"Second", " ", "Palette"}], "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Manipulate", "[", 
+                    RowBox[{
+                    RowBox[{"Column", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Year: \>\"", ",", "year"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Month: \>\"", ",", "month"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Day: \>\"", ",", "day"}], "}"}], "]"}], ",", 
+                    " ", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Hour: \>\"", ",", "hour"}], "}"}], "]"}], 
+                    ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Minute: \>\"", ",", "minute"}], " ", "}"}], 
+                    "]"}], ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Second: \>\"", ",", 
+                    RowBox[{"second", "=", 
+                    RowBox[{
+                    RowBox[{"10", "s10"}], "+", "s1"}]}]}], "}"}], "]"}]}], 
+                    "}"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"s10", ",", "dSec10", ",", "\"\<Ten\>\""}], "}"}],
+                     ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "5"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"s1", ",", "dSec1", ",", "\"\<One\>\""}], "}"}], 
+                    ",", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+                    "\[IndentingNewLine]", "}"}]}], "]"}], ",", 
+                    RowBox[{"results", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "year", ",", "month", ",", "day", ",", "hour", ",", 
+                    "minute", ",", "second"}], "}"}], "]"}]}], "}"}], ",", 
+                    RowBox[{"WindowMargins", "\[Rule]", "Automatic"}]}], 
+                    "\[IndentingNewLine]", "]"}]}], "}"}]}], "]"}], 
+                    "\[IndentingNewLine]", ",", 
+                    RowBox[{"results", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "year", ",", "month", ",", "day", ",", "hour", ",", 
+                    "minute", ",", "0"}], "}"}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], ",", 
+                    RowBox[{"WindowMargins", "\[Rule]", "Automatic"}]}], 
+                    "]"}]}], "\[IndentingNewLine]", "}"}]}], 
+                    "\[IndentingNewLine]", "]"}], ",", 
+                    RowBox[{"results", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "year", ",", "month", ",", "day", ",", "hour", ",", "0", 
+                    ",", "0"}], "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+                    "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+                    RowBox[{"WindowMargins", "\[Rule]", "Automatic"}]}], 
+                    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+                    "}"}]}], "\[IndentingNewLine]", "]"}], ",", 
+                    RowBox[{"results", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "year", ",", "month", ",", "day", ",", "0", ",", "0", ",",
+                     "0"}], "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+                    "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+                    RowBox[{"WindowMargins", "\[Rule]", "Automatic"}]}], 
+                    "\[IndentingNewLine]", "]"}]}], "}"}]}], 
+                "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], 
+             ",", 
+             RowBox[{"WindowMargins", "\[Rule]", "Automatic"}]}], 
+            "\[IndentingNewLine]", "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+        "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"WindowMargins", "\[Rule]", "Automatic"}]}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.699931041862048*^9, 3.6999310516611176`*^9}, {
+   3.6999311073874044`*^9, 3.699931108157446*^9}, 3.6999313122684603`*^9, {
+   3.6999317752531347`*^9, 3.6999317926544275`*^9}, {3.699932273686185*^9, 
+   3.6999322752854023`*^9}, {3.699932425887809*^9, 3.6999324356377444`*^9}, {
+   3.699932539884077*^9, 3.6999325885746145`*^9}, {3.699933607592848*^9, 
+   3.6999336206686716`*^9}, {3.699933672860484*^9, 3.6999337076500373`*^9}}],
+
+Cell[BoxData[
+ ButtonBox["\<\"Begin\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>CreatePalette[{
+     Manipulate[
+      Row[{
+       "Year: ", $CellContext`year = 
+        1000 $CellContext`y1000 + 100 $CellContext`y100 + 
+         10 $CellContext`y10 + $CellContext`y1}], {{$CellContext`y1000, \
+$CellContext`dYr1000, "Thousand"}, 
+       Range[0, 9], ControlType -> 
+       SetterBar}, {{$CellContext`y100, $CellContext`dYr100, "Hundred"}, 
+       Range[0, 9], ControlType -> 
+       SetterBar}, {{$CellContext`y10, $CellContext`dYr10, "Ten"}, 
+       Range[0, 9], ControlType -> 
+       SetterBar}, {{$CellContext`y1, $CellContext`dYr1, "One"}, 
+       Range[0, 9], ControlType -> SetterBar}], 
+     Button["Select Month", {
+       NotebookClose[], 
+       CreatePalette[{
+         Manipulate[
+          Column[{
+            Row[{"Year: ", $CellContext`year}], 
+            
+            Row[{"Month: ", $CellContext`month = $CellContext`m}]}], \
+{{$CellContext`m, $CellContext`dMonth, "Month"}, 
+           Range[1, 12], ControlType -> SetterBar}], 
+         Button["Select Day", {
+           NotebookClose[], 
+           CreatePalette[{
+             Manipulate[
+              Column[{
+                Row[{"Year: ", $CellContext`year}], 
+                Row[{"Month: ", $CellContext`month}], 
+                
+                Row[{"Day: ", $CellContext`day = 
+                  10 $CellContext`d10 + $CellContext`d1}]}], 
+              
+              PaneSelector[{
+               False -> Control[{{$CellContext`d10, $CellContext`dDay10, 
+                    "Ten"}, 
+                   Range[0, 3], ControlType -> SetterBar}], True -> 
+                Control[{{$CellContext`d10, $CellContext`dDay10, "Ten"}, 
+                   Range[0, 2], ControlType -> 
+                   SetterBar}]}, $CellContext`month == 2], 
+              PaneSelector[{{3, $CellContext`month == 2, True, 
+                  LeapYearQ[$CellContext`year]} -> 
+                Control[{{$CellContext`d1, $CellContext`dDay1, "One"}, 
+                   Range[0, 1], ControlType -> SetterBar}], {
+                 3, $CellContext`month == 2, False, 
+                  LeapYearQ[$CellContext`year]} -> 
+                Control[{{$CellContext`d1, $CellContext`dDay1, "One"}, {0}, 
+                   ControlType -> SetterBar}], {0, $CellContext`month == 2, 
+                  MemberQ[{1, 3, 5, 7, 8, 10, 12}, $CellContext`month], 
+                  LeapYearQ[$CellContext`year]} -> 
+                Control[{{$CellContext`d1, $CellContext`dDay1, "One"}, 
+                   Range[0, 9], ControlType -> SetterBar}], {
+                 1, $CellContext`month == 2, 
+                  MemberQ[{1, 3, 5, 7, 8, 10, 12}, $CellContext`month], 
+                  LeapYearQ[$CellContext`year]} -> 
+                Control[{{$CellContext`d1, $CellContext`dDay1, "One"}, 
+                   Range[0, 9], ControlType -> SetterBar}], {2, False, 
+                  MemberQ[{1, 3, 5, 7, 8, 10, 12}, $CellContext`month], 
+                  LeapYearQ[$CellContext`year]} -> 
+                Control[{{$CellContext`d1, $CellContext`dDay1, "One"}, 
+                   Range[0, 9], ControlType -> SetterBar}], {2, True, 
+                  MemberQ[{1, 3, 5, 7, 8, 10, 12}, $CellContext`month], True} -> 
+                Control[{{$CellContext`d1, $CellContext`dDay1, "One"}, 
+                   Range[0, 9], ControlType -> SetterBar}], {2, True, 
+                  MemberQ[{1, 3, 5, 7, 8, 10, 12}, $CellContext`month], 
+                  False} -> Control[{{$CellContext`d1, $CellContext`dDay1, 
+                    "One"}, 
+                   Range[0, 8], ControlType -> 
+                   SetterBar}]}, {$CellContext`d10, $CellContext`month == 2, 
+                MemberQ[{1, 3, 5, 7, 8, 10, 12}, $CellContext`month], 
+                LeapYearQ[$CellContext`year]}]], 
+             Row[{
+               Button["Select Hour", {
+                 NotebookClose[], 
+                 CreatePalette[{
+                   Manipulate[
+                    Column[{
+                    Row[{"Year: ", $CellContext`year}], 
+                    Row[{"Month: ", $CellContext`month}], 
+                    Row[{"Day: ", $CellContext`day}], 
+                    
+                    Row[{"Hour: ", $CellContext`hour = 
+                    10 $CellContext`h10 + $CellContext`h1}]}], \
+{{$CellContext`h10, 0, "Ten"}, 
+                    Range[0, 2], ControlType -> SetterBar}, 
+                    
+                    PaneSelector[{
+                    0 -> Control[{{$CellContext`h1, $CellContext`dHour1, 
+                    "One"}, 
+                    Range[0, 9], ControlType -> SetterBar}], 1 -> 
+                    Control[{{$CellContext`h1, $CellContext`dHour1, "One"}, 
+                    Range[0, 9], ControlType -> SetterBar}], 2 -> 
+                    Control[{{$CellContext`h1, $CellContext`dHour1, "One"}, 
+                    Range[0, 3], ControlType -> 
+                    SetterBar}]}, $CellContext`h10]], 
+                   Row[{
+                    Button["Select Minute", {
+                    NotebookClose[], 
+                    CreatePalette[{
+                    Manipulate[
+                    Column[{
+                    Row[{"Year: ", $CellContext`year}], 
+                    Row[{"Month: ", $CellContext`month}], 
+                    Row[{"Day: ", $CellContext`day}], 
+                    Row[{"Hour: ", $CellContext`hour}], 
+                    
+                    Row[{"Minute: ", $CellContext`minute = 
+                    10 $CellContext`m10 + $CellContext`m1}]}], \
+{{$CellContext`m10, $CellContext`dMin10, "Ten"}, 
+                    Range[0, 5], ControlType -> 
+                    SetterBar}, {{$CellContext`m1, $CellContext`dMin1, "One"}, 
+                    Range[0, 9], ControlType -> SetterBar}], 
+                    Row[{
+                    Button["Select Second", {
+                    NotebookClose[], 
+                    CreatePalette[{
+                    Manipulate[
+                    Column[{
+                    Row[{"Year: ", $CellContext`year}], 
+                    Row[{"Month: ", $CellContext`month}], 
+                    Row[{"Day: ", $CellContext`day}], 
+                    Row[{"Hour: ", $CellContext`hour}], 
+                    Row[{"Minute: ", $CellContext`minute}], 
+                    
+                    Row[{"Second: ", $CellContext`second = 
+                    10 $CellContext`s10 + $CellContext`s1}]}], \
+{{$CellContext`s10, $CellContext`dSec10, "Ten"}, 
+                    Range[0, 5], ControlType -> 
+                    SetterBar}, {{$CellContext`s1, $CellContext`dSec1, "One"}, 
+                    Range[0, 9], ControlType -> SetterBar}], 
+                    $CellContext`results[{$CellContext`year, \
+$CellContext`month, $CellContext`day, $CellContext`hour, $CellContext`minute, \
+$CellContext`second}]}, WindowMargins -> Automatic]}], 
+                    $CellContext`results[{$CellContext`year, \
+$CellContext`month, $CellContext`day, $CellContext`hour, $CellContext`minute, 
+                    0}]}]}, WindowMargins -> Automatic]}], 
+                    $CellContext`results[{$CellContext`year, \
+$CellContext`month, $CellContext`day, $CellContext`hour, 0, 0}]}]}, 
+                  WindowMargins -> Automatic]}], 
+               $CellContext`results[{$CellContext`year, $CellContext`month, \
+$CellContext`day, 0, 0, 0}]}]}, WindowMargins -> Automatic]}]}, WindowMargins -> 
+        Automatic]}]}, WindowMargins -> Automatic],
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{3.69993105643582*^9, 3.6999311249500923`*^9, 
+  3.699931793557832*^9, 3.6999324813182364`*^9, 3.6999325329275713`*^9, 
+  3.699932592832904*^9, 3.699933710863594*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"4321", "-", 
+  RowBox[{"Mod", "[", 
+   RowBox[{"4321", ",", "1000"}], "]"}], "-", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Today", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], " ", "-", " ", 
+    RowBox[{"Mod", "[", 
+     RowBox[{
+      RowBox[{"Today", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "1000"}], "]"}]}], 
+   ")"}]}]], "Input",
+ CellChangeTimes->{{3.699931134974765*^9, 3.6999311696429915`*^9}, {
+  3.699931361521458*^9, 3.699931376623636*^9}, {3.6999314132310686`*^9, 
+  3.699931421761718*^9}}],
+
+Cell[BoxData["2000"], "Output",
+ CellChangeTimes->{{3.6999311529717903`*^9, 3.699931170465178*^9}, {
+  3.6999313624649687`*^9, 3.699931377272397*^9}, {3.699931416656329*^9, 
+  3.699931422013489*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Today", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], " ", "-", " ", 
+    RowBox[{"Mod", "[", 
+     RowBox[{
+      RowBox[{"Today", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "100"}], "]"}]}], ")"}], 
+  "-", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Today", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], " ", "-", " ", 
+    RowBox[{"Mod", "[", 
+     RowBox[{
+      RowBox[{"Today", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "1000"}], "]"}]}], 
+   ")"}]}]], "Input",
+ CellChangeTimes->{{3.699931430106925*^9, 3.699931527565194*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.6999314277135525`*^9, 3.6999314947921667`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Today", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], "-", 
+      RowBox[{"Mod", "[", 
+       RowBox[{
+        RowBox[{"Today", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "10"}], "]"}]}], ")"}], 
+    "-", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1000", "defaultYr1000"}], " ", "+", " ", 
+      RowBox[{"100", "defaultYr100"}]}], ")"}]}], ")"}], "/", "10"}]], "Input",
+ CellChangeTimes->{{3.6999316221006975`*^9, 3.699931655972805*^9}, {
+  3.699931705033325*^9, 3.6999317155503044`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{{3.6999317056479845`*^9, 3.699931716929121*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"FullForm", "@", "Today"}], "\[IndentingNewLine]", 
+ RowBox[{"FullForm", "@", 
+  RowBox[{"DateObject", "[", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6999311900212517`*^9, 3.6999312428708043`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"DateObject", "[", 
+    RowBox[{"List", "[", 
+     RowBox[{"2017", ",", "3", ",", "30"}], "]"}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{{3.6999311954937744`*^9, 3.6999312430954027`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"DateObject", "[", 
+    RowBox[{
+     RowBox[{"List", "[", 
+      RowBox[{"2017", ",", "3", ",", "30"}], "]"}], ",", 
+     RowBox[{"TimeObject", "[", 
+      RowBox[{
+       RowBox[{"List", "[", 
+        RowBox[{"23", ",", "40", ",", "43.0863795`"}], "]"}], ",", 
+       RowBox[{"Rule", "[", 
+        RowBox[{"TimeZone", ",", 
+         RowBox[{"-", "7.`"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"Rule", "[", 
+      RowBox[{"TimeZone", ",", 
+       RowBox[{"-", "7.`"}]}], "]"}]}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{{3.6999311954937744`*^9, 3.699931243103423*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Today", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], " ", "-", " ", 
+    RowBox[{"Mod", "[", 
+     RowBox[{
+      RowBox[{"Today", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "1000"}], "]"}]}], ")"}], 
+  "/", "1000"}]], "Input",
+ CellChangeTimes->{{3.6999312610010395`*^9, 3.699931297348736*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{{3.699931263906785*^9, 3.699931297757859*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6999313588573704`*^9, 3.6999313661608*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DateObject", "[", "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{"2", ",", "1"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.699932767118503*^9, 3.699932779078329*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "6", ",", "25.9074883`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6999327696452236`*^9, 3.6999327859165106`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Mod", "[", 
+  RowBox[{
+   RowBox[{"Floor", "@", 
+    RowBox[{
+     RowBox[{"DateObject", "[", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ",", "1", ",", "3"}], "]"}], "]"}]}], ",", "10"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6999334708681126`*^9, 3.699933471928933*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{{3.6999334608223867`*^9, 3.6999334722477827`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1520, 805},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6309, 177, 374, "Input"],
+Cell[6892, 201, 484, 21, 274, "Output"]
+}, Open  ]],
+Cell[7391, 225, 4729, 102, 374, "Input"],
+Cell[CellGroupData[{
+Cell[12145, 331, 25645, 557, 1598, "Input"],
+Cell[37793, 890, 7715, 151, 82, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45545, 1046, 592, 17, 37, "Input"],
+Cell[46140, 1065, 199, 3, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46376, 1073, 717, 24, 37, "Input"],
+Cell[47096, 1099, 98, 1, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47231, 1105, 660, 20, 37, "Input"],
+Cell[47894, 1127, 96, 1, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48027, 1133, 221, 4, 62, "Input"],
+Cell[48251, 1139, 330, 10, 54, "Output"],
+Cell[48584, 1151, 711, 21, 54, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49332, 1177, 421, 13, 37, "Input"],
+Cell[49756, 1192, 94, 1, 37, "Output"]
+}, Open  ]],
+Cell[49865, 1196, 92, 1, 37, "Input"],
+Cell[CellGroupData[{
+Cell[49982, 1201, 199, 5, 37, "Input"],
+Cell[50184, 1208, 163, 3, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50384, 1216, 307, 9, 37, "Input"],
+Cell[50694, 1227, 98, 1, 37, "Output"]
+}, Open  ]]
+}
+]
+*)
+

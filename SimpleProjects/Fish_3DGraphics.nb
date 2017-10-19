@@ -1,0 +1,610 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20581,        602]
+NotebookOptionsPosition[     20269,        586]
+NotebookOutlinePosition[     20611,        601]
+CellTagsIndexPosition[     20568,        598]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Fish Tank - Longinus Pun", "Title",
+ CellChangeTimes->{{3.684719068921685*^9, 3.684719073310656*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tank", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Specularity", "[", 
+        RowBox[{"Blue", ",", "0"}], "]"}], ",", 
+       RowBox[{"Opacity", "[", ".5", "]"}], ",", "Black", ",", 
+       RowBox[{"Cuboid", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "0", ",", 
+           RowBox[{"-", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"11", ",", "5", ",", "3"}], "}"}]}], "]"}]}], "}"}], ",", 
+     " ", 
+     RowBox[{"(*", "Cuboid", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Specularity", "[", 
+        RowBox[{"White", ",", "0"}], "]"}], ",", 
+       RowBox[{"Opacity", "[", "0", "]"}], ",", "Black", ",", 
+       RowBox[{"Cuboid", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "0", ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"11", ",", "5", ",", "5"}], "}"}]}], "]"}]}], "}"}]}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"submarine", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Specularity", "[", 
+        RowBox[{"White", ",", "5"}], "]"}], ",", 
+       RowBox[{"Opacity", "[", ".8", "]"}], ",", "Black", ",", 
+       RowBox[{"Tube", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"6", ",", "4", ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"6", ",", "4", ",", "5.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"7.5", ",", "4", ",", "5.5"}], "}"}]}], "}"}], ",", 
+         ".25"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"(*", "Tube", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"EdgeForm", "[", "None", "]"}], ",", 
+       RowBox[{"Cylinder", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"6.5", ",", "4", ",", "1.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "4", ",", "1.5"}], "}"}]}], "}"}], ",", ".75"}],
+         "]"}]}], "}"}], ",", " ", 
+     RowBox[{"(*", "Cylinder", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Sphere", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "4", ",", "1.5"}], "}"}], ",", ".75"}], "]"}], 
+      "}"}], ",", " ", 
+     RowBox[{"(*", "Sphere", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Sphere", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"6.5", ",", "4", ",", "1.5"}], "}"}], ",", ".75"}], "]"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Cone", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", "4", ",", "1.5"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "4", ",", "1.5"}], "}"}]}], "}"}], ",", "1"}], 
+       "]"}], "}"}], ",", " ", 
+     RowBox[{"(*", "Cone", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", ".025", "]"}], ",", "Black", ",", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "3.2", ",", "1.5"}], "}"}], "]"}]}], "}"}], ",", 
+     " ", 
+     RowBox[{"(*", "Point", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", ".025", "]"}], ",", "Yellow", ",", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"5", ",", "3.2", ",", "1.5"}], "}"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", ".025", "]"}], ",", "Black", ",", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "4.8", ",", "1.5"}], "}"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", ".025", "]"}], ",", "Yellow", ",", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"5", ",", "4.8", ",", "1.5"}], "}"}], "]"}]}], "}"}]}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fishPts", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"3.376", ",", " ", "2.5", ",", " ", "0.3"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{3.376, 2.5, 0.3}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+        "3.3880000000000003", ",", " ", "2.5", ",", " ", 
+         "0.12000000000000029"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{3.3880000000000003`, 2.5, 0.12000000000000029`}, NumberMarks -> 
+       False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"3.3427999999999995", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.15999999999999978"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{3.3427999999999995`, 2.5, -0.15999999999999978`}, 
+       NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"3.2032000000000003", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.3579999999999998"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{3.2032000000000003`, 2.5, -0.3579999999999998}, NumberMarks -> 
+       False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"2.9708", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.532"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.9708, 2.5, -0.532}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"2.75", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.567"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.75, 2.5, -0.567}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"2.3196000000000003", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.579"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.3196000000000003`, 2.5, -0.579}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.9824000000000002", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.591"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.9824000000000002`, 2.5, -0.591}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.7032", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.5209999999999999"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.7032, 2.5, -0.5209999999999999}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.6452000000000002", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.32300000000000006"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.6452000000000002`, 2.5, -0.32300000000000006`}, 
+       NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.5288", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.184"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.5288, 2.5, -0.184}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+        "1.3892", ",", " ", "2.5", ",", " ", "0.0030000000000001137"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.3892, 2.5, 0.0030000000000001137`}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.2732", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.06699999999999981"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.2732, 2.5, -0.06699999999999981}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.0756000000000001", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.11400000000000006"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.0756000000000001`, 2.5, -0.11400000000000006`}, 
+       NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"0.8308", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.1710000000000001"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{0.8308, 2.5, -0.1710000000000001}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"0.5404", ",", " ", "2.5", ",", " ", 
+         RowBox[{"-", "0.008999999999999985"}]}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{0.5404, 2.5, -0.008999999999999985}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"0.54", ",", " ", "2.5", ",", " ", "1.03"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{0.54, 2.5, 1.03}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+        "0.7847999999999999", ",", " ", "2.5", ",", " ", 
+         "1.0719999999999998"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{0.7847999999999999, 2.5, 1.0719999999999998`}, NumberMarks -> 
+       False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.0172", ",", " ", "2.5", ",", " ", "1.0030000000000001"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.0172, 2.5, 1.0030000000000001`}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.2172", ",", " ", "2.5", ",", " ", "0.8830000000000002"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.2172, 2.5, 0.8830000000000002}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.308", ",", " ", "2.5", ",", " ", "0.6190000000000001"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.308, 2.5, 0.6190000000000001}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.4364000000000001", ",", " ", "2.5", ",", " ", "0.35"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.4364000000000001`, 2.5, 0.35}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.4468", ",", " ", "2.5", ",", " ", "0.2580000000000002"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.4468, 2.5, 0.2580000000000002}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"1.6524", ",", " ", "2.5", ",", " ", "0.53"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.6524, 2.5, 0.53}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+        "1.9304000000000001", ",", " ", "2.5", ",", " ", 
+         "0.7150000000000002"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{1.9304000000000001`, 2.5, 0.7150000000000002}, NumberMarks -> 
+       False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+        "2.2676000000000003", ",", " ", "2.5", ",", " ", 
+         "0.7969999999999999"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.2676000000000003`, 2.5, 0.7969999999999999}, NumberMarks -> 
+       False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"2.3724", ",", " ", "2.5", ",", " ", "0.8539999999999999"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.3724, 2.5, 0.8539999999999999}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"2.8080000000000003", ",", " ", "2.5", ",", " ", "0.909"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.8080000000000003`, 2.5, 0.909}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"2.9604", ",", " ", "2.5", ",", " ", "0.8850000000000001"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{2.9604, 2.5, 0.8850000000000001}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+        "3.2148000000000003", ",", " ", "2.5", ",", " ", 
+         "0.7929999999999999"}], "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{3.2148000000000003`, 2.5, 0.7929999999999999}, NumberMarks -> 
+       False],
+      AutoDelete->True,
+      Editable->True], ",", 
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"3.308", ",", " ", "2.5", ",", " ", "0.5490000000000002"}], 
+        "}"}],
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      InputForm[{3.308, 2.5, 0.5490000000000002}, NumberMarks -> False],
+      AutoDelete->True,
+      Editable->True]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fish", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"EdgeForm", "[", "None", "]"}], ",", "Orange", ",", 
+       RowBox[{"Polygon", "[", "fishPts", "]"}]}], "}"}], ",", " ", 
+     RowBox[{"(*", "Polygon", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", ".03", "]"}], ",", "Black", ",", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"2.75", ",", "2.45", ",", ".5"}], "}"}], "]"}]}], "}"}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bottomOfTank", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "0", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "5", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", ".5"}], ",", "2.5", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "5", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", ".5"}], ",", "2.5", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", 
+            RowBox[{"5", "/", "3"}], ",", 
+            RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}], "}"}], ",", " ", 
+      RowBox[{"(*", "Line", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"n", ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"n", "+", "1"}], ",", "5", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"n", "+", ".5"}], ",", "2.5", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"n", ",", "5", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"n", "+", ".5"}], ",", "2.5", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"n", "-", "1"}], ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", "0", ",", "10"}], "}"}]}], "]"}], "}"}]}], 
+     "}"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Graphics3D", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "tank", ",", "\[IndentingNewLine]", "submarine", ",", 
+     "\[IndentingNewLine]", "fish", ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Polygon", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "}"}], ",", 
+         RowBox[{"{", "}"}], ",", 
+         RowBox[{"{", "}"}]}], "}"}], "]"}], "}"}], ",", 
+     "\[IndentingNewLine]", "bottomOfTank", ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"6.5", ",", "4", ",", "1.5"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"9", ",", "4", ",", "1.5"}], "}"}]}], "}"}], "]"}]}], 
+      "}"}]}], " ", 
+    RowBox[{"(*", "Arrow", "*)"}], "\[IndentingNewLine]", "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Boxed", " ", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Axes", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+    "\[IndentingNewLine]", "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6847189682017937`*^9, 3.684718970329666*^9}}]
+}, Open  ]]
+},
+WindowSize->{1904, 1021},
+WindowMargins->{{5, Automatic}, {Automatic, 8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 107, 1, 101, "Title"],
+Cell[690, 25, 19563, 558, 696, "Input"]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,314 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11483,        306]
+NotebookOptionsPosition[     11065,        286]
+NotebookOutlinePosition[     11439,        302]
+CellTagsIndexPosition[     11396,        299]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Name", "Title",
+ CellChangeTimes->{{3.682307294868067*^9, 3.6823072963195715`*^9}, {
+  3.6834263657604575`*^9, 3.683426366072385*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"runnerHead", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Brown", ",", 
+       RowBox[{"Disk", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{".9", ",", "1"}], "}"}]}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Brown", ",", 
+       RowBox[{"Polygon", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            RowBox[{"-", ".01"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{".8", ",", ".3"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{".9", ",", "0"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Black", ",", 
+       RowBox[{"Disk", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{".6", ",", ".35"}], "}"}], ",", ".05"}], "]"}]}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", 
+       RowBox[{"Disk", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{".8", ",", 
+           RowBox[{"-", ".35"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{".11", ",", ".04"}], "}"}]}], "]"}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"runnerBody", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"Gray", ",", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"runnerUpperArm", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"Black", ",", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{".3", ",", " ", "1.3"}], "}"}]}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"runnerForearm", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"Black", ",", 
+      RowBox[{"Disk", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{".27", ",", " ", "1.1"}], "}"}]}], "]"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"runningPath", "[", "t_", "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"Sin", "[", "t", "]"}], "+", "6"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"Translate", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Rotate", "[", 
+             RowBox[{
+              RowBox[{"Translate", "[", 
+               RowBox[{"runnerUpperArm", ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "6.7"}], "}"}]}], "]"}], ",", 
+              RowBox[{"-", 
+               RowBox[{"Cos", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"1", "/", "2"}], "t"}], "+", 
+                 RowBox[{"3", 
+                  RowBox[{"Pi", "/", "4"}]}]}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "8"}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Translate", "[", 
+             RowBox[{"runnerBody", ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "6"}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Translate", "[", 
+             RowBox[{"runnerHead", ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "9"}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Rotate", "[", 
+             RowBox[{
+              RowBox[{"Translate", "[", 
+               RowBox[{"runnerUpperArm", ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "6.7"}], "}"}]}], "]"}], ",", 
+              RowBox[{"Cos", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"1", "/", "2"}], "t"}], "+", 
+                RowBox[{"3", 
+                 RowBox[{"Pi", "/", "4"}]}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "8"}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Rotate", "[", 
+             RowBox[{
+              RowBox[{"Translate", "[", 
+               RowBox[{"runnerForearm", ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "7"}], "}"}]}], "]"}], ",", "0", ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", 
+            RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+         "]"}], "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "12"}], "}"}]}], ",", 
+       RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], 
+      "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"runningPath", "[", "x", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"-", "10"}], ",", "10"}], "}"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ImageSize", "\[Rule]", "500"}]}], "\[IndentingNewLine]", "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", 
+     RowBox[{
+      RowBox[{"-", "5"}], 
+      RowBox[{"Pi", "/", "2"}]}], ",", 
+     RowBox[{"5", 
+      RowBox[{"Pi", "/", "2"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"sp", ",", "0", ",", "\"\<Start Position\>\""}], "}"}], ",", 
+     "0", ",", 
+     RowBox[{"2", "Pi"}], ",", "VerticalSlider", ",", 
+     RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.6834263579804993`*^9, 3.683426359896388*^9}, {
+  3.6834265076465864`*^9, 3.683426550339515*^9}, {3.6834273641678667`*^9, 
+  3.683427844382412*^9}, {3.683427902871476*^9, 3.6834279089099584`*^9}, {
+  3.6834279790985675`*^9, 3.683428266837687*^9}, {3.6834282985427275`*^9, 
+  3.6834283310477357`*^9}, {3.6834284026068277`*^9, 3.6834285749744387`*^9}, {
+  3.6834287086946316`*^9, 3.6834288576201415`*^9}, {3.6834288876237493`*^9, 
+  3.6834290436927958`*^9}, {3.683429135567433*^9, 3.6834291689774237`*^9}, {
+  3.683429250282827*^9, 3.683429274204482*^9}, {3.683429323142922*^9, 
+  3.683429435248499*^9}, {3.6834294795111513`*^9, 3.6834299008238544`*^9}, {
+  3.6834299617889643`*^9, 3.683429990903884*^9}, {3.683430032730353*^9, 
+  3.683430286603622*^9}, {3.683430334639185*^9, 3.6834304266662683`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`sp$$ = 
+    0, $CellContext`t$$ = -3.9112828537192925`, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], Rational[-5, 2] Pi, Rational[5, 2] Pi}, {{
+       Hold[$CellContext`sp$$], 0, "Start Position"}, 0, 2 Pi}}, 
+    Typeset`size$$ = {700., {212., 219.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$153231$$ = 0, $CellContext`sp$153232$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`sp$$ = 0, $CellContext`t$$ = 
+        Rational[-5, 2] Pi}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$153231$$, 0], 
+        Hold[$CellContext`sp$$, $CellContext`sp$153232$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        Graphics[{
+          Translate[{
+            Rotate[
+             Translate[$CellContext`runnerUpperArm, {0, 6.7}], -
+             Cos[(1/2) $CellContext`t$$ + 3 (Pi/4)], {0, 8}], 
+            Translate[$CellContext`runnerBody, {0, 6}], 
+            Translate[$CellContext`runnerHead, {0, 9}], 
+            Rotate[
+             Translate[$CellContext`runnerUpperArm, {0, 6.7}], 
+             Cos[(1/2) $CellContext`t$$ + 3 (Pi/4)], {0, 8}], 
+            Rotate[
+             Translate[$CellContext`runnerForearm, {0, 7}], 0, {0, 
+             0}]}, {$CellContext`t$$, 
+            Sin[$CellContext`t$$]}]}, Axes -> True, PlotRange -> {0, 12}, 
+         AspectRatio -> Automatic], 
+        Plot[
+         $CellContext`runningPath[$CellContext`x], {$CellContext`x, -10, 10}],
+         ImageSize -> 500], 
+      "Specifications" :> {{$CellContext`t$$, Rational[-5, 2] Pi, 
+         Rational[5, 2] Pi}, {{$CellContext`sp$$, 0, "Start Position"}, 0, 2 
+         Pi, ControlType -> VerticalSlider, ControlPlacement -> Left}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{891., {270., 279.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.683429802442771*^9, 3.683429820011355*^9}, {
+  3.6834298503213124`*^9, 3.683429901088872*^9}, {3.6834299623503156`*^9, 
+  3.683429991394902*^9}, {3.6834300441054163`*^9, 3.6834301412570896`*^9}, {
+  3.6834301767085094`*^9, 3.683430199134164*^9}, {3.6834302325477095`*^9, 
+  3.6834302870546007`*^9}, {3.683430335311699*^9, 3.683430343105652*^9}, {
+  3.68343037785574*^9, 3.6834304268807077`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1037},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.4 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 140, 2, 141, "Title"],
+Cell[CellGroupData[{
+Cell[745, 28, 7113, 190, 828, "Input"],
+Cell[7861, 220, 3176, 62, 572, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
