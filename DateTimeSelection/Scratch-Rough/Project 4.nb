@@ -1,0 +1,1520 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     55467,       1512]
+NotebookOptionsPosition[     51238,       1363]
+NotebookOutlinePosition[     51586,       1378]
+CellTagsIndexPosition[     51543,       1375]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData["Now"], "Input",
+ CellChangeTimes->{{3.6993633401327915`*^9, 3.699363340468182*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"\"Fri 24 Mar 2017 09:55:41\"", 
+     StyleBox[
+      RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+        RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+   RowBox[{"DateObject", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{"2017", ",", "3", ",", "24"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"9", ",", "55", ",", "41.168357`"}], "}"}], ",", 
+           RowBox[{"TimeZone", "\[Rule]", 
+             RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+       RowBox[{"TimeZone", "\[Rule]", 
+         RowBox[{"-", "7.`"}]}]}], "]"}]},
+  "DateObject",
+  Editable->False]], "Output",
+ CellChangeTimes->{3.6993633412199936`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DateObject", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.699363481590042*^9, 3.6993634899853754`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"\"Fri 24 Mar 2017 09:58:10\"", 
+     StyleBox[
+      RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+        RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+   RowBox[{"DateObject", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{"2017", ",", "3", ",", "24"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"9", ",", "58", ",", "10.3719044`"}], "}"}], ",", 
+           RowBox[{"TimeZone", "\[Rule]", 
+             RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+       RowBox[{"TimeZone", "\[Rule]", 
+         RowBox[{"-", "7.`"}]}]}], "]"}]},
+  "DateObject",
+  Editable->False]], "Output",
+ CellChangeTimes->{3.699363490402986*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sunrise", "[", 
+  RowBox[{"DateObject", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.699363557666383*^9, 3.6993635768778486`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"\"Sat 25 Mar 2017 06:47\"", 
+     StyleBox[
+      RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+        RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+   RowBox[{"DateObject", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{"2017", ",", "3", ",", "25"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"6", ",", "47"}], "}"}], ",", 
+           RowBox[{"TimeZone", "\[Rule]", 
+             RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+       RowBox[{"TimeZone", "\[Rule]", 
+         RowBox[{"-", "7.`"}]}]}], "]"}]},
+  "DateObject",
+  Editable->False]], "Output",
+ CellChangeTimes->{3.699363579764528*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.699589048916054*^9, 3.699589051087489*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.699621586354411*^9, 3.699621591253413*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "year", ",", "month", ",", "day", ",", "hour", ",", "minute", ",", 
+     "second", ",", "hourBool", ",", "minBool", ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"OddQ", "[", "month", "]"}], ",", 
+       RowBox[{"dayCond", "=", "1"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"month", "\[NotEqual]", "2"}], ",", 
+         RowBox[{"dayCond", "=", "2"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Divisible", "[", 
+             RowBox[{"year", ",", "4"}], "]"}], "&&", 
+            RowBox[{"!", 
+             RowBox[{"Divisible", "[", 
+              RowBox[{"year", ",", "400"}], "]"}]}]}], ",", 
+           RowBox[{"dayCond", "=", "4"}], ",", 
+           RowBox[{"dayCond", "=", "3"}]}], "\[IndentingNewLine]", "]"}]}], 
+        "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+     "\"\<daycond\>\"", ",", "dayCond"}], "\[IndentingNewLine]", "}"}], 
+   "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"year", ",", "0", ",", "\"\<Year\>\""}], "}"}], ",", "0", ",", 
+     "4000", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"month", ",", "1", ",", "\"\<Month\>\""}], "}"}], ",", "1", ",",
+      "12", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"PaneSelector", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"day", ",", "1", ",", "\"\<1\>\""}], "}"}], ",", "1", ",",
+            "31", ",", "1"}], "}"}]}]}], ",", 
+       RowBox[{"2", "\[Rule]", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"day", ",", "1", ",", "\"\<2\>\""}], "}"}], ",", "1", ",",
+            "30", ",", "1"}], "}"}]}]}], ",", 
+       RowBox[{"3", "\[Rule]", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"day", ",", "1", ",", "\"\<4\>\""}], "}"}], ",", "1", ",",
+            "29", ",", "1"}], "}"}]}]}], ",", 
+       RowBox[{"4", "\[Rule]", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"day", ",", "1", ",", "\"\<3\>\""}], "}"}], ",", "1", ",",
+            "28", ",", "1"}], "}"}]}]}]}], "}"}], ",", "dayCond"}], "]"}], 
+   "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+   RowBox[{"Row", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Control", "@", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"hourBool", ",", "True", ",", "\"\<Hour\>\""}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"True", "\[Rule]", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"hour", ",", "0", ",", "\"\<\>\""}], "}"}], ",", "0", 
+              ",", "23", ",", "1"}], "}"}]}]}], ",", 
+          RowBox[{"False", "\[Rule]", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{"hour", ",", 
+              RowBox[{"ControlType", "\[Rule]", "None"}]}], "}"}]}]}]}], 
+         "}"}], ",", "hourBool"}], "]"}]}], "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Row", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"True", "\[Rule]", " ", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"minBool", ",", "True", ",", "\"\<Minute\>\""}], "}"}],
+               ",", 
+              RowBox[{"{", 
+               RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}]}], ",", 
+          RowBox[{"True", "\[Rule]", " ", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"minBool", ",", "True", ",", "\"\<Minute\>\""}], "}"}],
+               ",", 
+              RowBox[{"{", 
+               RowBox[{"True", ",", "False"}], "}"}], ",", 
+              RowBox[{"ControlType", "\[Rule]", "None"}]}], "}"}]}]}]}], 
+         "}"}], ",", "hourBool"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"True", "\[Rule]", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"minute", ",", "0", ",", "\"\<\>\""}], "}"}], ",", "0",
+               ",", "59", ",", "1"}], "}"}]}]}], ",", 
+          RowBox[{"False", "\[Rule]", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{"minute", ",", 
+              RowBox[{"ControlType", "\[Rule]", "None"}]}], "}"}]}]}]}], 
+         "}"}], ",", "minBool"}], "]"}]}], "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Row", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"True", "\[Rule]", " ", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"secBool", ",", "True", ",", "\"\<Second\>\""}], "}"}],
+               ",", 
+              RowBox[{"{", 
+               RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}]}], ",", 
+          RowBox[{"False", "\[Rule]", " ", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"secBool", ",", "False", ",", "\"\<Second\>\""}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"True", ",", "False"}], "}"}], ",", 
+              RowBox[{"ControlType", "\[Rule]", "None"}]}], "}"}]}]}]}], 
+         "}"}], ",", "minBool"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"True", "\[Rule]", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"second", ",", "0", ",", "\"\<\>\""}], "}"}], ",", "0",
+               ",", "23", ",", "1"}], "}"}]}]}], ",", 
+          RowBox[{"False", "\[Rule]", 
+           RowBox[{"Control", "@", 
+            RowBox[{"{", 
+             RowBox[{"second", ",", 
+              RowBox[{"ControlType", "\[Rule]", "None"}]}], "}"}]}]}]}], 
+         "}"}], ",", "secBool"}], "]"}]}], "}"}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6995890708765774`*^9, 3.6995891659829683`*^9}, {
+  3.6995895729466143`*^9, 3.69958958659991*^9}, {3.6995899343874235`*^9, 
+  3.6995900414048467`*^9}, {3.6995903806234255`*^9, 3.6995906224037275`*^9}, {
+  3.6995906587417717`*^9, 3.699590665940925*^9}, {3.6996149572978086`*^9, 
+  3.6996150360581155`*^9}, {3.6996150941418147`*^9, 3.6996153403694553`*^9}, {
+  3.699615383440802*^9, 3.6996154912560835`*^9}, {3.6996157039307985`*^9, 
+  3.699615720924267*^9}, {3.699615813508803*^9, 3.699615821019661*^9}, {
+  3.6996158958186073`*^9, 3.6996159532733793`*^9}, {3.699615984536524*^9, 
+  3.699616055648285*^9}, {3.6996160887226233`*^9, 3.6996161359954185`*^9}, {
+  3.699616485374055*^9, 3.6996165072703257`*^9}, {3.699617074115532*^9, 
+  3.699617177307985*^9}, {3.699617212947799*^9, 3.6996173425804615`*^9}, {
+  3.699708438048432*^9, 3.6997084402202487`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`day$$ = 1, $CellContext`hour$$ = 
+    0, $CellContext`hourBool$$ = True, $CellContext`minBool$$ = 
+    True, $CellContext`minute$$ = 0, $CellContext`month$$ = 
+    1, $CellContext`secBool$$ = False, $CellContext`second$$ = 
+    0, $CellContext`year$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`year$$], 0, "Year"}, 0, 4000, 1}, {{
+       Hold[$CellContext`month$$], 1, "Month"}, 1, 12, 1}, {{
+       Hold[$CellContext`day$$], 1, "1"}, 1, 31, 1}, {{
+       Hold[$CellContext`day$$], 1, "2"}, 1, 30, 1}, {{
+       Hold[$CellContext`day$$], 1, "4"}, 1, 29, 1}, {{
+       Hold[$CellContext`day$$], 1, "3"}, 1, 28, 1}, {
+      Hold[
+       PaneSelector[{
+        1 -> Manipulate`Place[1], 2 -> Manipulate`Place[2], 3 -> 
+         Manipulate`Place[3], 4 -> 
+         Manipulate`Place[4]}, $CellContext`dayCond]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`hourBool$$], True, "Hour"}, {True, False}}, {{
+       Hold[$CellContext`hour$$], 0, ""}, 0, 23, 1}, {
+      Hold[$CellContext`hour$$]}, {
+      Hold[
+       Row[{
+         Manipulate`Place[5], 
+         PaneSelector[{
+          True -> Manipulate`Place[6], False -> 
+           Manipulate`Place[7]}, $CellContext`hourBool$$]}]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`minBool$$], True, "Minute"}, {True, False}}, {{
+       Hold[$CellContext`minBool$$], True, "Minute"}, {True, False}}, {{
+       Hold[$CellContext`minute$$], 0, ""}, 0, 59, 1}, {
+      Hold[$CellContext`minute$$]}, {
+      Hold[
+       Row[{
+         PaneSelector[{
+          True -> Manipulate`Place[8], True -> 
+           Manipulate`Place[9]}, $CellContext`hourBool$$], 
+         PaneSelector[{
+          True -> Manipulate`Place[10], False -> 
+           Manipulate`Place[11]}, $CellContext`minBool$$]}]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`secBool$$], True, "Second"}, {True, False}}, {{
+       Hold[$CellContext`secBool$$], False, "Second"}, {True, False}}, {{
+       Hold[$CellContext`second$$], 0, ""}, 0, 23, 1}, {
+      Hold[$CellContext`second$$]}, {
+      Hold[
+       Row[{
+         PaneSelector[{
+          True -> Manipulate`Place[12], False -> 
+           Manipulate`Place[13]}, $CellContext`minBool$$], 
+         PaneSelector[{
+          True -> Manipulate`Place[14], False -> 
+           Manipulate`Place[15]}, $CellContext`secBool$$]}]], 
+      Manipulate`Dump`ThisIsNotAControl}}, Typeset`size$$ = {287., {3., 9.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`year$2456$$ = 0, $CellContext`month$2457$$ = 
+    0, $CellContext`day$2458$$ = 0, $CellContext`hourBool$2459$$ = 
+    False, $CellContext`hour$2460$$ = 0, $CellContext`minBool$2461$$ = 
+    False, $CellContext`minute$2462$$ = 0, $CellContext`secBool$2463$$ = 
+    False, $CellContext`second$2464$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`day$$ = 1, $CellContext`hour$$ = 
+        0, $CellContext`hourBool$$ = True, $CellContext`minBool$$ = 
+        True, $CellContext`minute$$ = 0, $CellContext`month$$ = 
+        1, $CellContext`secBool$$ = False, $CellContext`second$$ = 
+        0, $CellContext`year$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`year$$, $CellContext`year$2456$$, 0], 
+        Hold[$CellContext`month$$, $CellContext`month$2457$$, 0], 
+        Hold[$CellContext`day$$, $CellContext`day$2458$$, 0], 
+        Hold[$CellContext`hourBool$$, $CellContext`hourBool$2459$$, False], 
+        Hold[$CellContext`hour$$, $CellContext`hour$2460$$, 0], 
+        Hold[$CellContext`minBool$$, $CellContext`minBool$2461$$, False], 
+        Hold[$CellContext`minute$$, $CellContext`minute$2462$$, 0], 
+        Hold[$CellContext`secBool$$, $CellContext`secBool$2463$$, False], 
+        Hold[$CellContext`second$$, $CellContext`second$2464$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> {$CellContext`year$$, $CellContext`month$$, \
+$CellContext`day$$, $CellContext`hour$$, $CellContext`minute$$, \
+$CellContext`second$$, $CellContext`hourBool$$, $CellContext`minBool$$, 
+        If[
+         OddQ[$CellContext`month$$], $CellContext`dayCond = 1, 
+         If[$CellContext`month$$ != 2, $CellContext`dayCond = 2, 
+          If[
+           And[
+            Divisible[$CellContext`year$$, 4], 
+            Not[
+             Divisible[$CellContext`year$$, 400]]], $CellContext`dayCond = 
+           4, $CellContext`dayCond = 3]]], "daycond", $CellContext`dayCond}, 
+      "Specifications" :> {{{$CellContext`year$$, 0, "Year"}, 0, 4000, 
+         1}, {{$CellContext`month$$, 1, "Month"}, 1, 12, 
+         1}, {{$CellContext`day$$, 1, "1"}, 1, 31, 1, ControlPlacement -> 
+         1}, {{$CellContext`day$$, 1, "2"}, 1, 30, 1, ControlPlacement -> 
+         2}, {{$CellContext`day$$, 1, "4"}, 1, 29, 1, ControlPlacement -> 
+         3}, {{$CellContext`day$$, 1, "3"}, 1, 28, 1, ControlPlacement -> 4}, 
+        PaneSelector[{
+         1 -> Manipulate`Place[1], 2 -> Manipulate`Place[2], 3 -> 
+          Manipulate`Place[3], 4 -> 
+          Manipulate`Place[
+           4]}, $CellContext`dayCond], {{$CellContext`hourBool$$, True, 
+          "Hour"}, {True, False}, ControlPlacement -> 
+         5}, {{$CellContext`hour$$, 0, ""}, 0, 23, 1, ControlPlacement -> 
+         6}, {$CellContext`hour$$, ControlType -> None, ControlPlacement -> 
+         7}, 
+        Row[{
+          Manipulate`Place[5], 
+          
+          PaneSelector[{
+           True -> Manipulate`Place[6], False -> 
+            Manipulate`Place[
+             7]}, $CellContext`hourBool$$]}], {{$CellContext`minBool$$, True, 
+          "Minute"}, {True, False}, ControlPlacement -> 
+         8}, {{$CellContext`minBool$$, True, "Minute"}, {True, False}, 
+         ControlType -> None, ControlPlacement -> 
+         9}, {{$CellContext`minute$$, 0, ""}, 0, 59, 1, ControlPlacement -> 
+         10}, {$CellContext`minute$$, ControlType -> None, ControlPlacement -> 
+         11}, 
+        Row[{
+          
+          PaneSelector[{
+           True -> Manipulate`Place[8], True -> 
+            Manipulate`Place[9]}, $CellContext`hourBool$$], 
+          
+          PaneSelector[{
+           True -> Manipulate`Place[10], False -> 
+            Manipulate`Place[
+             11]}, $CellContext`minBool$$]}], {{$CellContext`secBool$$, True, 
+          "Second"}, {True, False}, ControlPlacement -> 
+         12}, {{$CellContext`secBool$$, False, "Second"}, {True, False}, 
+         ControlType -> None, ControlPlacement -> 
+         13}, {{$CellContext`second$$, 0, ""}, 0, 23, 1, ControlPlacement -> 
+         14}, {$CellContext`second$$, ControlType -> None, ControlPlacement -> 
+         15}, 
+        Row[{
+          
+          PaneSelector[{
+           True -> Manipulate`Place[12], False -> 
+            Manipulate`Place[13]}, $CellContext`minBool$$], 
+          
+          PaneSelector[{
+           True -> Manipulate`Place[14], False -> 
+            Manipulate`Place[15]}, $CellContext`secBool$$]}]}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{338., {119., 126.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6995895590666876`*^9, 3.6995895871062565`*^9}, 
+   3.699590042048559*^9, {3.699590383730691*^9, 3.6995905442668543`*^9}, {
+   3.699590595654565*^9, 3.699590666304932*^9}, 3.6996150401049185`*^9, 
+   3.699615097038226*^9, {3.6996151311747456`*^9, 3.699615208226443*^9}, 
+   3.699615274742934*^9, {3.6996153109096212`*^9, 3.6996153408850965`*^9}, {
+   3.6996153851597004`*^9, 3.699615413022087*^9}, 3.6996161057593937`*^9, {
+   3.699616486415827*^9, 3.699616509351807*^9}, 3.6996171035247145`*^9, 
+   3.699617178096081*^9, {3.6996172144116917`*^9, 3.6996173432401857`*^9}, 
+   3.699621342971734*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`day$$ = 1, $CellContext`hour$$ = 
+    0, $CellContext`minute$$ = 0, $CellContext`month$$ = 
+    1, $CellContext`second$$ = 0, $CellContext`year$$ = 1990, Typeset`show$$ =
+     True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`year$$], 1990, 2000}, {
+      Hold[$CellContext`month$$], 1, 12}, {
+      Hold[$CellContext`day$$], 1, 30}, {
+      Hold[$CellContext`hour$$], 0, 23}, {
+      Hold[$CellContext`minute$$], 0, 59}, {
+      Hold[$CellContext`second$$], 0, 59}}, Typeset`size$$ = {134., {2., 8.}},
+     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`year$1151$$ = 0, $CellContext`month$1156$$ = 
+    0, $CellContext`day$1157$$ = 0, $CellContext`hour$1158$$ = 
+    0, $CellContext`minute$1159$$ = 0, $CellContext`second$1160$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`day$$ = 1, $CellContext`hour$$ = 
+        0, $CellContext`minute$$ = 0, $CellContext`month$$ = 
+        1, $CellContext`second$$ = 0, $CellContext`year$$ = 1990}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`year$$, $CellContext`year$1151$$, 0], 
+        Hold[$CellContext`month$$, $CellContext`month$1156$$, 0], 
+        Hold[$CellContext`day$$, $CellContext`day$1157$$, 0], 
+        Hold[$CellContext`hour$$, $CellContext`hour$1158$$, 0], 
+        Hold[$CellContext`minute$$, $CellContext`minute$1159$$, 0], 
+        Hold[$CellContext`second$$, $CellContext`second$1160$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> {$CellContext`year$$, $CellContext`month$$, \
+$CellContext`day$$, $CellContext`hour$$, $CellContext`minute$$, \
+$CellContext`second$$}, 
+      "Specifications" :> {{$CellContext`year$$, 1990, 
+         2000}, {$CellContext`month$$, 1, 12}, {$CellContext`day$$, 1, 
+         30}, {$CellContext`hour$$, 0, 23}, {$CellContext`minute$$, 0, 
+         59}, {$CellContext`second$$, 0, 59}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{288., {119., 126.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{{3.6995894215215893`*^9, 3.699589424586744*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"3", " ", "+", " ", "t"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", 
+     RowBox[{"{", "True", "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6995902967422624`*^9, 3.6995903720255513`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = True, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], {True}}}, Typeset`size$$ = {49., {0., 8.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$23178$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = True}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$23178$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 3 + $CellContext`t$$, 
+      "Specifications" :> {{$CellContext`t$$, {True}}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{101., {53., 60.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6995903195108356`*^9, 3.699590372305334*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{"t", ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "True", ",", 
+     RowBox[{"ControlType", "\[Rule]", "Checkbox"}]}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6995892609348364`*^9, 3.6995892918395967`*^9}, {
+  3.6995895447125015`*^9, 3.699589554215784*^9}, {3.699590057253008*^9, 
+  3.6995900778688707`*^9}, {3.6995902037509117`*^9, 3.69959025876523*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = True, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], True}}, Typeset`size$$ = {28., {0., 8.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = True}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> $CellContext`t$$, 
+      "Specifications" :> {{$CellContext`t$$, True, ControlType -> Checkbox}},
+       "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{255., {48., 55.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6995902248991337`*^9, 3.6995902593237166`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$KernelID"], "Input",
+ CellChangeTimes->{{3.699589427020219*^9, 3.6995894313006086`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.6995894320115337`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$KernelCount"], "Input",
+ CellChangeTimes->{{3.69958943440687*^9, 3.6995894362517767`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.6995894365587416`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.699589446728656*^9, 3.6995894614427943`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LaunchKernels", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.6995894658204403`*^9, 3.6995894708588552`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Updating from Wolfram Research server ...\"\>"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6995894820867157`*^9}],
+
+Cell[BoxData["\<\"Updating from Wolfram Research server ...\"\>"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.699589489263809*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"KernelObject\"\>", "[", 
+    RowBox[{"1", ",", "\<\"local\"\>"}], "]"}], ",", 
+   RowBox[{"\<\"KernelObject\"\>", "[", 
+    RowBox[{"2", ",", "\<\"local\"\>"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6995894684364004`*^9, 3.699589489555585*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$KernelCount"], "Input",
+ CellChangeTimes->{{3.699589479006523*^9, 3.699589481886181*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.699589489814324*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ParallelEvaluate", "[", "$KernelID", "]"}]], "Input",
+ CellChangeTimes->{{3.6995894905452175`*^9, 3.699589498807198*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2"}], "}"}]], "Output",
+ CellChangeTimes->{3.6995894991942368`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6995894542747254`*^9, 3.699589455293441*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"1", "+", "2"}]], "Input",
+ CellChangeTimes->{{3.6995895366350117`*^9, 3.6995895373318677`*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.6995895377410226`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6995895393672895`*^9, 3.6995895398505716`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"today", " ", "=", " ", 
+  RowBox[{"DateObject", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6995896446082325`*^9, 3.6995896583878903`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"\"Mon 27 Mar 2017 09:57:43\"", 
+     StyleBox[
+      RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+        RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+   RowBox[{"DateObject", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{"2017", ",", "3", ",", "27"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"9", ",", "57", ",", "43.2873559`"}], "}"}], ",", 
+           RowBox[{"TimeZone", "\[Rule]", 
+             RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+       RowBox[{"TimeZone", "\[Rule]", 
+         RowBox[{"-", "7.`"}]}]}], "]"}]},
+  "DateObject",
+  Editable->False]], "Output",
+ CellChangeTimes->{3.699589658831079*^9, 3.6996226633545294`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"FullForm", "[", 
+  RowBox[{"Sunrise", "@", "today"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Sunrise", "@", "today"}]}], "Input",
+ CellChangeTimes->{{3.6995896610269117`*^9, 3.699589679483013*^9}, {
+  3.699589720538014*^9, 3.699589726022605*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"DateObject", "[", 
+    RowBox[{
+     RowBox[{"List", "[", 
+      RowBox[{"2017", ",", "3", ",", "28"}], "]"}], ",", 
+     RowBox[{"TimeObject", "[", 
+      RowBox[{
+       RowBox[{"List", "[", 
+        RowBox[{"6", ",", "43"}], "]"}], ",", 
+       RowBox[{"Rule", "[", 
+        RowBox[{"TimeZone", ",", 
+         RowBox[{"-", "7.`"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"Rule", "[", 
+      RowBox[{"TimeZone", ",", 
+       RowBox[{"-", "7.`"}]}], "]"}]}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{3.6995897263635116`*^9, 3.6996226649768467`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"\"Tue 28 Mar 2017 06:43\"", 
+     StyleBox[
+      RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+        RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+   RowBox[{"DateObject", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{"2017", ",", "3", ",", "28"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"6", ",", "43"}], "}"}], ",", 
+           RowBox[{"TimeZone", "\[Rule]", 
+             RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+       RowBox[{"TimeZone", "\[Rule]", 
+         RowBox[{"-", "7.`"}]}]}], "]"}]},
+  "DateObject",
+  Editable->False]], "Output",
+ CellChangeTimes->{3.6995897263635116`*^9, 3.6996226650139446`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sunset", "@", "today"}]], "Input",
+ CellChangeTimes->{{3.6995896718166428`*^9, 3.69958967369762*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"\"Mon 27 Mar 2017 19:07\"", 
+     StyleBox[
+      RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+        RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+   RowBox[{"DateObject", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{"2017", ",", "3", ",", "27"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"19", ",", "7"}], "}"}], ",", 
+           RowBox[{"TimeZone", "\[Rule]", 
+             RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+       RowBox[{"TimeZone", "\[Rule]", 
+         RowBox[{"-", "7.`"}]}]}], "]"}]},
+  "DateObject",
+  Editable->False]], "Output",
+ CellChangeTimes->{3.6995896739723525`*^9, 3.699622668603524*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6996229591673098`*^9, 3.6996229617203646`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sunrise", "[", "today", "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{"2", ",", "1", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6995896995043*^9, 3.6995897410525913`*^9}, {
+  3.6996226561313133`*^9, 3.6996226807427897`*^9}, {3.6996227165039372`*^9, 
+  3.699622721254614*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"6", ",", "43"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6995897101826963`*^9, 3.6995897413584027`*^9}, {
+  3.6996226575220127`*^9, 3.699622681093722*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Row", "[", 
+  RowBox[{"{", 
+   RowBox[{"\"\<Sunrise: \>\"", ",", 
+    RowBox[{
+     RowBox[{"Sunrise", "[", "today", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ",", "1", ",", "1"}], "]"}], "]"}], ",", "\"\<:\>\"", ",", 
+    RowBox[{
+     RowBox[{"Sunrise", "[", "today", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.699622723183704*^9, 3.6996227526240206`*^9}, {
+  3.699622785027224*^9, 3.6996227935970693`*^9}, {3.699622870993927*^9, 
+  3.699622926941807*^9}, {3.6996229641026974`*^9, 3.699623014740406*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{"\"Sunrise: \"","6","\":\"","43"},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.699622912618664*^9, 3.6996229276075563`*^9}, 
+   3.69962301529488*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Sunrise", "@", "#"}], ",", 
+     RowBox[{"Sunset", "@", "#"}], ",", 
+     RowBox[{"SunPosition", "@", "#"}], ",", 
+     RowBox[{"MoonPosition", "@", "#"}], ",", 
+     RowBox[{"MoonPhase", "@", "#"}]}], "}"}], "&"}], "@", "today"}]], "Input",
+ CellChangeTimes->{{3.699589771366235*^9, 3.699589830507571*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{RowBox[{"\"Mon 27 Mar 2017 06:44\"", 
+       StyleBox[
+        RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+          RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2017", ",", "3", ",", "27"}], "}"}], ",", 
+         RowBox[{"TimeObject", "[", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"6", ",", "44"}], "}"}], ",", 
+             RowBox[{"TimeZone", "\[Rule]", 
+               RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+         RowBox[{"TimeZone", "\[Rule]", 
+           RowBox[{"-", "7.`"}]}]}], "]"}]},
+    "DateObject",
+    Editable->False], ",", 
+   TemplateBox[{RowBox[{"\"Mon 27 Mar 2017 19:07\"", 
+       StyleBox[
+        RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+          RowBox[{"-", "7.`"}]}], FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2017", ",", "3", ",", "27"}], "}"}], ",", 
+         RowBox[{"TimeObject", "[", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"19", ",", "7"}], "}"}], ",", 
+             RowBox[{"TimeZone", "\[Rule]", 
+               RowBox[{"-", "7.`"}]}]}], "]"}], ",", 
+         RowBox[{"TimeZone", "\[Rule]", 
+           RowBox[{"-", "7.`"}]}]}], "]"}]},
+    "DateObject",
+    Editable->False], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     TemplateBox[{
+      "356.4774537618492331603`5.552032067101042",
+       RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+       "\"AngularDegrees\""},
+      "QuantityPostfix"], ",", 
+     TemplateBox[{
+      RowBox[{"-", "54.2775215000992901082`4.734620008048017"}],
+       RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+       "\"AngularDegrees\""},
+      "QuantityPostfix"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     TemplateBox[{
+      "14.619378807550106103`4.164928919394432",
+       RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+       "\"AngularDegrees\""},
+      "QuantityPostfix"], ",", 
+     TemplateBox[{
+      RowBox[{"-", "60.2252169820135563327`4.779778373368121"}],
+       RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+       "\"AngularDegrees\""},
+      "QuantityPostfix"]}], "}"}], ",", "0.0093435748522521789`4."}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6995898360713835`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"tt", "\[Equal]", "1"}], ",", "True", ",", "False"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6996154959816265`*^9, 3.69961556193346*^9}}],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"tt", "\[Equal]", "1"}], ",", "True", ",", "False"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{{3.699615520920377*^9, 3.6996155624642773`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"x", "=", "n"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "0", ",", "5", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.699615536847571*^9, 3.6996156004438353`*^9}, {
+  3.699615637056223*^9, 3.699615670080618*^9}, {3.6996158574198246`*^9, 
+  3.6996158591236305`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 0, 5, 1}}, Typeset`size$$ = {7., {0., 8.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$13583$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`n$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$13583$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`x = $CellContext`n$$), 
+      "Specifications" :> {{$CellContext`n$$, 0, 5, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{258., {51., 58.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.699615565907922*^9, 3.699615600771517*^9}, {
+   3.6996156471309133`*^9, 3.6996156705238333`*^9}, 3.6996158599044676`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"OddQ", "[", "tt", "]"}], ",", "True", ",", "False"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6996155706647906`*^9, 3.6996156314556913`*^9}, {
+  3.69961568862481*^9, 3.699615692942897*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   If[
+    OddQ[$CellContext`tt], True, False], StandardForm],
+  ImageSizeCache->{35., {0., 9.}}]], "Output",
+ CellChangeTimes->{{3.6996156105641384`*^9, 3.699615631970914*^9}, 
+   3.6996156933174276`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"Divisible", "[", 
+     RowBox[{"x", ",", "4"}], "]"}], ",", "True", ",", "False"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6996158286449723`*^9, 3.6996158811594296`*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   If[
+    Divisible[$CellContext`x, 4], True, False], StandardForm],
+  ImageSizeCache->{28., {0., 8.}}]], "Output",
+ CellChangeTimes->{{3.699615849294205*^9, 3.699615881408995*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"{", 
+   RowBox[{"x", ","}]}]}]], "Input",
+ CellChangeTimes->{{3.699615866854429*^9, 3.699615877293125*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.69961586733886*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"OddQ", "[", "m", "]"}], ",", "31", ",", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"m", "\[NotEqual]", "2"}], ",", "30", ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Divisible", "[", 
+          RowBox[{"y", ",", "4"}], "]"}], "&&", 
+         RowBox[{"!", 
+          RowBox[{"Divisible", "[", 
+           RowBox[{"y", ",", "400"}], "]"}]}]}], ",", "28", ",", "29"}], 
+       "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.699616147523855*^9, 3.699616158585017*^9}, 
+   3.699616277247054*^9, {3.699616410110793*^9, 3.699616438384009*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   If[
+    OddQ[$CellContext`m], 31, 
+    If[$CellContext`m != 2, 30, 
+     If[
+      And[
+       Divisible[$CellContext`y, 4], 
+       Not[
+        Divisible[$CellContext`y, 400]]], 28, 29]]], StandardForm],
+  ImageSizeCache->{14., {0., 8.}}]], "Output",
+ CellChangeTimes->{{3.69961615526679*^9, 3.699616158881432*^9}, 
+   3.6996161961850786`*^9, 3.699616277621785*^9, {3.699616410569009*^9, 
+   3.699616438832199*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Divisible", "[", 
+   RowBox[{"y", ",", "4"}], "]"}], "&&", 
+  RowBox[{"!", 
+   RowBox[{"Divisible", "[", 
+    RowBox[{"y", ",", "400"}], "]"}]}]}]], "Input"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6996161747127085`*^9, 3.699616194225752*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"m", "=", "z"}], ",", 
+     RowBox[{"y", "=", "x"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "3000", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", "0", ",", "12", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6996161780041604`*^9, 3.699616282892948*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`x$$ = 1600, $CellContext`z$$ = 2, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`x$$], 0, 3000, 1}, {
+      Hold[$CellContext`z$$], 0, 12, 1}}, Typeset`size$$ = {62., {2., 8.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`x$16921$$ = 0, $CellContext`z$16922$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`x$$ = 0, $CellContext`z$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`x$$, $CellContext`x$16921$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$16922$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> {$CellContext`m = $CellContext`z$$, $CellContext`y = \
+$CellContext`x$$}, 
+      "Specifications" :> {{$CellContext`x$$, 0, 3000, 1}, {$CellContext`z$$, 
+         0, 12, 1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{256., {65., 72.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{3.699616399570794*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`x$$ = 1700, $CellContext`z$$ = 2, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`x$$], 1700}, 0, 3000, 1}, {{
+       Hold[$CellContext`z$$], 2}, 0, 12, 1}}, Typeset`size$$ = {
+    62., {2., 8.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`x$17167$$ = 
+    0, $CellContext`z$17168$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`x$$ = 1700, $CellContext`z$$ = 2}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`x$$, $CellContext`x$17167$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$17168$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> {$CellContext`m = $CellContext`z$$, $CellContext`y = \
+$CellContext`x$$}, 
+      "Specifications" :> {{{$CellContext`x$$, 1700}, 0, 3000, 
+         1}, {{$CellContext`z$$, 2}, 0, 12, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{256., {65., 72.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.699616399835454*^9}],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"OddQ", "[", "m", "]"}], ",", 
+   RowBox[{"dayCond", "=", "31"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"m", "\[NotEqual]", "2"}], ",", 
+     RowBox[{"dayCond", "=", "30"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Divisible", "[", 
+         RowBox[{"y", ",", "4"}], "]"}], "&&", 
+        RowBox[{"!", 
+         RowBox[{"Divisible", "[", 
+          RowBox[{"y", ",", "400"}], "]"}]}]}], ",", 
+       RowBox[{"dayCond", "=", "28"}], ",", 
+       RowBox[{"dayCond", "=", "29"}]}], "\[IndentingNewLine]", "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6996170461784444`*^9, 3.699617064666399*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaneSelector", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "\[Rule]", "31"}], ",", 
+     RowBox[{"2", "\[Rule]", "30"}], ",", 
+     RowBox[{"3", "\[Rule]", "29"}], ",", 
+     RowBox[{"4", "\[Rule]", "28"}]}], "}"}], ",", "dayCond"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.699616537992008*^9, 3.699616739038127*^9}, {
+  3.6996167977814054`*^9, 3.6996169082843814`*^9}, {3.6996169904582105`*^9, 
+  3.6996170343278646`*^9}}],
+
+Cell[BoxData[
+ PaneSelectorBox[{1->"31", 2->"30", 3->"29", 4->
+  "28"}, $CellContext`dayCond]], "Output",
+ CellChangeTimes->{3.6996170386714187`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "=", "3"}], ";", 
+  RowBox[{"b", "=", "3"}]}]], "Input",
+ CellChangeTimes->{{3.6996167283998566`*^9, 3.6996167320987*^9}, {
+  3.6996168217552156`*^9, 3.699616822150236*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{
+  3.69961673256491*^9, {3.6996168109624696`*^9, 3.699616822507183*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Unequal", "[", 
+  RowBox[{"3", ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6996166467373095`*^9, 3.699616647594582*^9}, {
+  3.699616680467308*^9, 3.6996166854185176`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.699616681813905*^9, 3.6996166858616576`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"#", ",", "#1", ",", "#2"}], "}"}], "&"}], "@", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6996167449789305`*^9, 3.699616780708987*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Function","slotn",
+   "\"Slot number \\!\\(\\*RowBox[{\\\"2\\\"}]\\) in \
+\\!\\(\\*RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"#1\\\", \\\",\\\", \
+\\\"#1\\\", \\\",\\\", \\\"#2\\\"}], \\\"}\\\"}], \\\"&\\\"}]\\) cannot be \
+filled from \\!\\(\\*RowBox[{RowBox[{\\\"(\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"#1\\\", \\\",\\\", \\\"#1\\\", \\\",\\\", \\\"#2\\\"}], \
+\\\"}\\\"}], \\\"&\\\"}], \\\")\\\"}], \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\", \
+\\\",\\\", \\\"3\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\
+\"2\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"4\\\"}], \\\"}\\\"}]}], \\\"}\\\
+\"}], \\\"]\\\"}]\\).\"",2,75,29,32155613980589002168,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.6996167763353558`*^9, 3.699616780986725*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}], ",", "#2"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6996167606786985`*^9, 3.6996167810378647`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"(", 
+  RowBox[{
+   RowBox[{"Divisible", "[", 
+    RowBox[{"3", ",", "4"}], "]"}], "||", 
+   RowBox[{"Divisible", "[", 
+    RowBox[{"12", ",", "4"}], "]"}]}], ")"}]], "Input",
+ CellChangeTimes->{{3.699616909579829*^9, 3.699616925932334*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.699616914344508*^9, 3.699616926394595*^9}}]
+}, Open  ]]
+},
+WindowSize->{1536, 821},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 97, 1, 30, "Input"],
+Cell[680, 25, 738, 19, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1455, 49, 126, 2, 30, "Input"],
+Cell[1584, 53, 737, 19, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2358, 77, 160, 3, 30, "Input"],
+Cell[2521, 82, 714, 19, 41, "Output"]
+}, Open  ]],
+Cell[3250, 104, 92, 1, 30, "Input"],
+Cell[3345, 107, 92, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[3462, 112, 8089, 201, 468, "Input"],
+Cell[11554, 315, 8597, 171, 262, "Output"]
+}, Open  ]],
+Cell[20166, 489, 2919, 55, 262, "Input"],
+Cell[CellGroupData[{
+Cell[23110, 548, 314, 7, 69, "Input"],
+Cell[23427, 557, 1584, 32, 130, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25048, 594, 419, 9, 30, "Input"],
+Cell[25470, 605, 1504, 30, 120, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27011, 640, 103, 1, 30, "Input"],
+Cell[27117, 643, 72, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27226, 649, 105, 1, 30, "Input"],
+Cell[27334, 652, 72, 1, 30, "Output"]
+}, Open  ]],
+Cell[27421, 656, 94, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[27540, 661, 131, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[27696, 667, 141, 2, 22, "Print"],
+Cell[27840, 671, 139, 2, 22, "Print"]
+}, Open  ]],
+Cell[27994, 676, 311, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28342, 688, 104, 1, 30, "Input"],
+Cell[28449, 691, 70, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28556, 697, 145, 2, 33, "Input"],
+Cell[28704, 701, 117, 3, 30, "Output"]
+}, Open  ]],
+Cell[28836, 707, 94, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[28955, 712, 119, 2, 30, "Input"],
+Cell[29077, 716, 72, 1, 30, "Output"]
+}, Open  ]],
+Cell[29164, 720, 96, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[29285, 725, 165, 3, 30, "Input"],
+Cell[29453, 730, 761, 19, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30251, 754, 273, 5, 50, "Input"],
+Cell[30527, 761, 690, 21, 30, "Output"],
+Cell[31220, 784, 740, 19, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31997, 808, 125, 2, 30, "Input"],
+Cell[32125, 812, 738, 19, 41, "Output"]
+}, Open  ]],
+Cell[32878, 834, 96, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[32999, 839, 370, 9, 30, "Input"],
+Cell[33372, 850, 195, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33604, 859, 634, 15, 30, "Input"],
+Cell[34241, 876, 183, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34461, 885, 386, 10, 30, "Input"],
+Cell[34850, 897, 2405, 64, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37292, 966, 197, 5, 30, "Input"],
+Cell[37492, 973, 199, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37728, 983, 349, 8, 30, "Input"],
+Cell[38080, 993, 1669, 34, 126, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39786, 1032, 281, 7, 30, "Input"],
+Cell[40070, 1041, 240, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40347, 1052, 263, 7, 30, "Input"],
+Cell[40613, 1061, 217, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40867, 1071, 158, 4, 30, "Input"],
+Cell[41028, 1077, 69, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41134, 1083, 809, 20, 126, "Input"],
+Cell[41946, 1105, 455, 13, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42438, 1123, 192, 6, 30, "Input"],
+Cell[42633, 1131, 99, 1, 30, "Output"]
+}, Open  ]],
+Cell[42747, 1135, 407, 11, 30, "Input"],
+Cell[43157, 1148, 1828, 37, 154, "Input"],
+Cell[44988, 1187, 1872, 39, 154, "Output"],
+Cell[46863, 1228, 813, 20, 126, "Input"],
+Cell[CellGroupData[{
+Cell[47701, 1252, 470, 12, 30, "Input"],
+Cell[48174, 1266, 149, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48360, 1274, 212, 5, 30, "Input"],
+Cell[48575, 1281, 120, 2, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48732, 1288, 202, 4, 30, "Input"],
+Cell[48937, 1294, 99, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49073, 1300, 365, 11, 30, "Input"],
+Cell[49441, 1313, 870, 14, 21, "Message"],
+Cell[50314, 1329, 507, 16, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50858, 1350, 264, 7, 30, "Input"],
+Cell[51125, 1359, 97, 1, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+

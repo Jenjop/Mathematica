@@ -1,0 +1,298 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9796,        290]
+NotebookOptionsPosition[      8586,        243]
+NotebookOutlinePosition[      8960,        259]
+CellTagsIndexPosition[      8917,        256]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Book Report - M\[ODoubleDot]bius Strip", "Title",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.690034755929571*^9, 3.6900347902698092`*^9}}],
+
+Cell["Report Author: Longinus Pun", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900352006510687`*^9, 3.6900352068875103`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Book Info", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.690034768155325*^9, 3.6900347702640924`*^9}}],
+
+Cell[TextData[{
+ "Title: ",
+ StyleBox["To Infinity and Beyond\n",
+  FontSlant->"Italic"],
+ "Author: Eli Maor"
+}], "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900348044920335`*^9, 3.6900348707717695`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Report", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900348804254055`*^9, 3.690034881146492*^9}, {
+  3.6900351041448374`*^9, 3.690035104898555*^9}}],
+
+Cell["Summary", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900351188961363`*^9, 3.690035119611184*^9}, 
+   3.6901668929323883`*^9, 3.6901678476633387`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Review", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.690035122768252*^9, 3.690035124216934*^9}, 
+   3.690167859053239*^9}],
+
+Cell["\<\
+While it is a book on mathematics, which may not interest a lot of people, it \
+is a great introduction to the concept of infinity. The book in interesting \
+and shows many applications of infinity such as fractals and optical \
+illusions.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6901678624298334`*^9, 3.690167921389841*^9}, {
+  3.6901679516383295`*^9, 3.6901680305060587`*^9}}]
+}, Closed]],
+
+Cell["What I Learned", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900351286214676`*^9, 3.6900351307537208`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Mathematica Elaboration", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900351479872313`*^9, 3.690035150456888*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Animation", "Subsection",
+ CellChangeTimes->{{3.6901686470016637`*^9, 3.6901686536036325`*^9}}],
+
+Cell["\<\
+I created an animation to depict the looping nature of a M\[ODoubleDot]bius \
+strip in which one can draw a line on both the inside and outside without \
+lifting a pencil.\
+\>", "Text",
+ CellChangeTimes->{{3.6901718645590477`*^9, 3.690171909835466*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Animate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ParametricPlot3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", 
+          RowBox[{
+           RowBox[{"v", "/", "2"}], 
+           RowBox[{"Cos", "[", 
+            RowBox[{"u", "/", "2"}], "]"}]}]}], ")"}], 
+        RowBox[{"Cos", "[", "u", "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", 
+          RowBox[{
+           RowBox[{"v", "/", "2"}], 
+           RowBox[{"Cos", "[", 
+            RowBox[{"u", "/", "2"}], "]"}]}]}], ")"}], 
+        RowBox[{"Sin", "[", "u", "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"v", "/", "2"}], 
+        RowBox[{"Sin", "[", 
+         RowBox[{"u", "/", "2"}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "0", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"v", ",", 
+       RowBox[{"-", ".5"}], ",", ".5"}], "}"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1.2"}], ",", "1.2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1.2"}], ",", "1.2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", ".5"}], ",", ".5"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+     RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "50"}]}], "]"}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"m", ",", ".00001", ",", 
+     RowBox[{"2", " ", "Pi"}], ",", 
+     RowBox[{"AppearanceElements", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<ProgressSlider\>\"", ",", "\"\<PlayPauseButton\>\"", ",", 
+        "\"\<ResetButton\>\""}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"AnimationRepetitions", "\[Rule]", "1"}]}], "]"}]], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.690035809091982*^9, 3.690035823801792*^9}, {
+  3.6901680749424067`*^9, 3.6901681268142233`*^9}, {3.6901682084928627`*^9, 
+  3.6901682812747526`*^9}, {3.690168327382877*^9, 3.690168351582633*^9}, {
+  3.6901684936491103`*^9, 3.6901685565336685`*^9}, {3.6901687429033613`*^9, 
+  3.690168745300116*^9}, {3.690168787294978*^9, 3.6901688569445825`*^9}, {
+  3.6901702872844286`*^9, 3.690170290263073*^9}, {3.690170781060494*^9, 
+  3.6901707812619996`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 6.283185307179586, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`m$$], 0.00001, 2 Pi}}, Typeset`size$$ = {
+    432., {174., 180.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`m$188078$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`m$$ = 0.00001}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`m$$, $CellContext`m$188078$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      ParametricPlot3D[{(1 + ($CellContext`v/2) Cos[$CellContext`u/2]) 
+         Cos[$CellContext`u], (1 + ($CellContext`v/2) Cos[$CellContext`u/2]) 
+         Sin[$CellContext`u], ($CellContext`v/2) 
+         Sin[$CellContext`u/2]}, {$CellContext`u, 
+         0, $CellContext`m$$}, {$CellContext`v, -0.5, 0.5}, PlotStyle -> Blue,
+         PlotRange -> {{-1.2, 1.2}, {-1.2, 1.2}, {-0.5, 0.5}}, Mesh -> None, 
+        Boxed -> False, Axes -> False, PlotPoints -> 50], 
+      "Specifications" :> {{$CellContext`m$$, 0.00001, 2 Pi, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "ResetButton"}, 
+         AnimationRepetitions -> 1, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{489., {219., 226.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.690168874857094*^9, 3.690170290492667*^9, 
+  3.690170781625064*^9}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Follow-Up", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.69003513381013*^9, 3.690035138828807*^9}}],
+
+Cell["What I Learned", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900351579484625`*^9, 3.6900351666226606`*^9}}],
+
+Cell["Further Study", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900351692876673`*^9, 3.6900351707879753`*^9}}]
+}, Closed]],
+
+Cell["Credits", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.6900351736766777`*^9, 3.6900351744927325`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1920, 1037},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 147, 2, 122, "Title"],
+Cell[730, 26, 137, 2, 35, "Text"],
+Cell[CellGroupData[{
+Cell[892, 32, 120, 2, 84, "Section"],
+Cell[1015, 36, 215, 7, 59, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1267, 48, 168, 3, 66, "Section"],
+Cell[1438, 53, 173, 3, 58, "Subsection"],
+Cell[CellGroupData[{
+Cell[1636, 60, 144, 3, 47, "Subsection"],
+Cell[1783, 65, 408, 8, 35, "Text"]
+}, Closed]],
+Cell[2206, 76, 130, 2, 47, "Subsection"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2373, 83, 134, 2, 84, "Section"],
+Cell[CellGroupData[{
+Cell[2532, 89, 101, 1, 58, "Subsection"],
+Cell[2636, 92, 263, 5, 35, "Text"],
+Cell[CellGroupData[{
+Cell[2924, 101, 2520, 66, 110, "Input"],
+Cell[5447, 169, 2545, 49, 465, "Output"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8053, 225, 117, 2, 84, "Section"],
+Cell[8173, 229, 130, 2, 58, "Subsection"],
+Cell[8306, 233, 129, 2, 47, "Subsection"]
+}, Closed]],
+Cell[8450, 238, 120, 2, 66, "Section"]
+}, Open  ]]
+}
+]
+*)
+
