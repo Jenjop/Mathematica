@@ -1,0 +1,1688 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     68605,       1680]
+NotebookOptionsPosition[     67144,       1626]
+NotebookOutlinePosition[     67520,       1642]
+CellTagsIndexPosition[     67477,       1639]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"color", "[", 
+    RowBox[{"r_", ",", "c_", ",", "a_"}], "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"a", "[", 
+      RowBox[{"[", 
+       RowBox[{"r", ",", "c"}], "]"}], "]"}], ",", "1", ",", "0"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"row", "[", 
+    RowBox[{"r_", ",", "len_", ",", "a_"}], "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"color", "[", 
+      RowBox[{"r", ",", "c", ",", "a"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "len"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rowSweep", "[", 
+   RowBox[{"c_", ",", "len_", ",", "a_"}], "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"row", "[", 
+     RowBox[{"r", ",", "len", ",", "a"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "c"}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.702818281588834*^9, 3.7028182958386908`*^9}, {
+  3.702818327040784*^9, 3.7028183334595623`*^9}, {3.7028183710431967`*^9, 
+  3.702818378367665*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cAr", "[", 
+   RowBox[{"r_", ",", "c_"}], "]"}], ":=", " ", 
+  RowBox[{"RandomChoice", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"True", ",", "False"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "c"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.702815760231991*^9, 3.7028157925266056`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"displayArray", "[", "a_", "]"}], ":=", 
+  RowBox[{"Dynamic", "@", 
+   RowBox[{"ArrayPlot", "[", "\[IndentingNewLine]", 
+    RowBox[{"Table", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"color", "[", 
+         RowBox[{"r", ",", "c", ",", "a"}], "]"}], "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"r", ",", 
+          RowBox[{"Length", "@", "a"}]}], "}"}]}], "]"}], 
+      "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"c", ",", 
+        RowBox[{"Length", "@", "a"}]}], "}"}]}], "]"}], "\[IndentingNewLine]",
+     "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.702819645863065*^9, 3.7028197063494897`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"createInteractive", "[", "a_", "]"}], ":=", 
+  RowBox[{"Column", "[", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Row", "[", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"DynamicModule", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"x", " ", "=", " ", 
+             RowBox[{"color", "[", 
+              RowBox[{"r", ",", "c", ",", "a"}], "]"}]}], ",", " ", 
+            RowBox[{"row", " ", "=", " ", "r"}], ",", " ", 
+            RowBox[{"col", " ", "=", " ", "c"}]}], "}"}], ",", 
+          RowBox[{"Button", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "@", 
+             RowBox[{"ArrayPlot", "[", 
+              RowBox[{"{", 
+               RowBox[{"{", 
+                RowBox[{"color", "[", 
+                 RowBox[{"row", ",", " ", "col", ",", "a"}], "]"}], "}"}], 
+               "}"}], "]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"x", "=", 
+               RowBox[{"Abs", "[", 
+                RowBox[{"x", "-", "1"}], "]"}]}], ",", 
+              RowBox[{
+               RowBox[{"a", "[", 
+                RowBox[{"[", 
+                 RowBox[{"row", ",", " ", "col"}], "]"}], "]"}], "=", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"x", "\[Equal]", "1"}], ",", "True", ",", "False"}], 
+                "]"}]}], ","}], "}"}]}], "]"}]}], "]"}], 
+        "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"r", ",", "5"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+      "]"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "5"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rev", "[", 
+    RowBox[{"a_", ",", "r_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"a", "[", 
+     RowBox[{"[", 
+      RowBox[{"r", ",", "c"}], "]"}], "]"}], "=", 
+    RowBox[{"!", 
+     RowBox[{"a", "[", 
+      RowBox[{"[", 
+       RowBox[{"r", ",", "c"}], "]"}], "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lOut", "[", 
+   RowBox[{"a_", ",", "r_", ",", "c_"}], "]"}], ":=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rev", "[", 
+     RowBox[{"a", ",", "r", ",", "c"}], "]"}], ",", 
+    RowBox[{"(*", 
+     RowBox[{"(", 
+      RowBox[{"r", ",", "c"}], ")"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"r", "\[Equal]", "1"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{"Beg", " ", "of", " ", "Row"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"c", "\[Equal]", "1"}], ",", 
+        RowBox[{"(*", 
+         RowBox[{"Beg", " ", "of", " ", "Col"}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"rev", "[", 
+           RowBox[{"a", ",", "r", ",", 
+            RowBox[{"c", "+", "1"}]}], "]"}], ",", 
+          RowBox[{"rev", "[", 
+           RowBox[{"a", ",", 
+            RowBox[{"r", "+", "1"}], ",", "c"}], "]"}]}], "}"}], ",", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", ",", "2"}], ")"}], ",", 
+          RowBox[{"(", 
+           RowBox[{"2", ",", "1"}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"c", "\[Equal]", 
+           RowBox[{"Length", "@", 
+            RowBox[{"a", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+          RowBox[{"(*", 
+           RowBox[{"End", " ", "of", " ", "Col"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", "r", ",", 
+              RowBox[{"c", "-", "1"}]}], "]"}], ",", " ", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", 
+              RowBox[{"r", "+", "1"}], ",", "c"}], "]"}]}], "}"}], ",", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", ",", 
+              RowBox[{"-", "2"}]}], ")"}], ",", 
+            RowBox[{"(", 
+             RowBox[{"2", ",", 
+              RowBox[{"-", "1"}]}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", 
+              RowBox[{"r", "+", "1"}], ",", "c"}], "]"}], ",", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", "r", ",", 
+              RowBox[{"c", "-", "1"}]}], "]"}], ",", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", "r", ",", 
+              RowBox[{"c", "+", "1"}]}], "]"}]}], "}"}]}], 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"r", "+", "1"}], ",", "c"}], ")"}], ",", 
+           RowBox[{"(", 
+            RowBox[{"r", ",", 
+             RowBox[{"c", "\[PlusMinus]", "1"}]}], ")"}]}], "*)"}], 
+         "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"r", "\[Equal]", 
+         RowBox[{"Length", "@", "a"}]}], ",", 
+        RowBox[{"(*", 
+         RowBox[{"End", " ", "of", " ", "Row"}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"c", "\[Equal]", "1"}], ",", 
+          RowBox[{"(*", 
+           RowBox[{"Beg", " ", "of", " ", "Col"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", "r", ",", 
+              RowBox[{"c", "+", "1"}]}], "]"}], ",", " ", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", 
+              RowBox[{"r", "-", "1"}], ",", "c"}], "]"}]}], "}"}], ",", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "2"}], ")"}], ",", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], ",", "1"}], ")"}]}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"c", "\[Equal]", 
+             RowBox[{"Length", "@", 
+              RowBox[{"a", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+            RowBox[{"(*", 
+             RowBox[{"End", " ", "of", " ", "Col"}], "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", "r", ",", 
+                RowBox[{"c", "-", "1"}]}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", 
+                RowBox[{"r", "-", "1"}], ",", "c"}], "]"}]}], "}"}], ",", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", 
+                RowBox[{"-", "2"}]}], ")"}], ",", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "2"}], ",", 
+                RowBox[{"-", "1"}]}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", 
+                RowBox[{"r", "-", "1"}], ",", "c"}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", "r", ",", 
+                RowBox[{"c", "-", "1"}]}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", "r", ",", 
+                RowBox[{"c", "+", "1"}]}], "]"}]}], "}"}]}], 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"r", "-", "1"}], ",", "c"}], ")"}], ",", 
+             RowBox[{"(", 
+              RowBox[{"r", ",", 
+               RowBox[{"c", "\[PlusMinus]", "1"}]}], ")"}]}], "*)"}], 
+           "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"c", "\[Equal]", "1"}], ",", " ", 
+          RowBox[{"(*", 
+           RowBox[{"Beg", " ", "of", " ", "Col"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", 
+              RowBox[{"r", "-", "1"}], ",", "c"}], "]"}], ",", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", 
+              RowBox[{"r", "+", "1"}], ",", "c"}], "]"}], ",", 
+            RowBox[{"a", "[", 
+             RowBox[{"[", 
+              RowBox[{"a", ",", "r", ",", 
+               RowBox[{"c", "+", "1"}]}], "]"}], "]"}], ",", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", "r", ",", 
+              RowBox[{"c", "+", "1"}]}], "]"}]}], "}"}], ",", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"r", "\[PlusMinus]", "1"}], ",", "c"}], ")"}], ",", 
+            RowBox[{"(", 
+             RowBox[{"r", ",", 
+              RowBox[{"c", "+", "1"}]}], ")"}]}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"c", "\[Equal]", 
+             RowBox[{"Length", "@", 
+              RowBox[{"a", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+            RowBox[{"(*", 
+             RowBox[{"End", " ", "of", " ", "Col"}], "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", 
+                RowBox[{"r", "-", "1"}], ",", "c", ",", "a"}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", 
+                RowBox[{"r", "+", "1"}], ",", "c"}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", "r", ",", 
+                RowBox[{"c", "-", "1"}]}], "]"}]}], "}"}], ",", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"r", "\[PlusMinus]", "1"}], ",", "c"}], ")"}], ",", 
+              RowBox[{"(", 
+               RowBox[{"r", ",", 
+                RowBox[{"c", "-", "1"}]}], ")"}]}], "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", 
+                RowBox[{"r", "+", "1"}], ",", "c"}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", 
+                RowBox[{"r", "-", "1"}], ",", "c"}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", "r", ",", 
+                RowBox[{"c", "+", "1"}]}], "]"}], ",", 
+              RowBox[{"rev", "[", 
+               RowBox[{"a", ",", "r", ",", 
+                RowBox[{"c", "-", "1"}]}], "]"}]}], "}"}]}], 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"r", "\[PlusMinus]", "1"}], ",", "c"}], ")"}], ",", 
+             RowBox[{"(", 
+              RowBox[{"r", ",", 
+               RowBox[{"c", "\[PlusMinus]", "1"}]}], ")"}]}], "*)"}], 
+           "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+       "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "}"}]}]}], "Input",
+ CellChangeTimes->{{3.702819724086623*^9, 3.7028197373419633`*^9}, 
+   3.70281991471113*^9, {3.7028210018428545`*^9, 3.7028210339296393`*^9}, {
+   3.702821518504161*^9, 3.702821530678535*^9}, {3.7028217240496225`*^9, 
+   3.7028217272707453`*^9}, {3.702821842881081*^9, 3.7028218713334064`*^9}, {
+   3.7028219508696527`*^9, 3.702822244823042*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rev", "[", 
+  RowBox[{"ar1", ",", "1", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.702821850012788*^9, 3.7028218763626947`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.7028218528588886`*^9, 3.7028219273445287`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ar1", "//", "TableForm"}], "//", "Dynamic"}]], "Input",
+ CellChangeTimes->{{3.702821894908251*^9, 3.702821903327667*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   TableForm[$CellContext`ar1], StandardForm],
+  ImageSizeCache->{275., {31.5, 38.5}}]], "Output",
+ CellChangeTimes->{3.7028219036000867`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lOut", "[", 
+  RowBox[{"ar1", ",", "1", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7028215392611356`*^9, 3.702821549669529*^9}, {
+  3.7028218134578714`*^9, 3.702821815838665*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"1", "\[LeftDoubleBracket]", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"1", "\[LeftDoubleBracket]", 
+           RowBox[{"1", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "True", ",", "False", ",", "True", ",", "True"}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "False", ",", "True", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "False", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "False", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+               "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], ",", 
+         RowBox[{"!", 
+          RowBox[{"1", "\[LeftDoubleBracket]", 
+           RowBox[{"2", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"!", 
+                 RowBox[{"1", "\[LeftDoubleBracket]", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "False", ",", "True", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "False", ",", "True", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "True", ",", "True", ",", 
+                    "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+                ",", "True", ",", "False", ",", "True", ",", "True"}], "}"}], 
+              ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "False", ",", "True", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "False", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "False", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+               "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], ",", "False", 
+         ",", "True", ",", "True"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"2", "\[LeftDoubleBracket]", 
+           RowBox[{"1", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"!", 
+                 RowBox[{"1", "\[LeftDoubleBracket]", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "False", ",", "True", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "False", ",", "True", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "True", ",", "True", ",", 
+                    "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+                ",", 
+                RowBox[{"!", 
+                 RowBox[{"1", "\[LeftDoubleBracket]", 
+                  RowBox[{"2", ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"!", 
+                    RowBox[{"1", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "False", ",", "True", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "False", ",", "True", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "True", ",", "True", ",", 
+                    "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+                    ",", "True", ",", "False", ",", "True", ",", "True"}], 
+                    "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "False", ",", "True", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "True", ",", "True", ",", 
+                    "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+                ",", "False", ",", "True", ",", "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "False", ",", "True", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "False", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "False", ",", "False", ",", "False", ",", 
+                "True"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+               "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], ",", "True", 
+         ",", "False", ",", "False", ",", "True"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+        "}"}]}], "}"}]}], "\[RightDoubleBracket]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"1", "\[LeftDoubleBracket]", 
+       RowBox[{"2", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"!", 
+             RowBox[{"1", "\[LeftDoubleBracket]", 
+              RowBox[{"1", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "True", ",", "False", ",", "True", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "False", ",", "True", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "False", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "False", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "True", ",", "True", ",", "True", ",", 
+                   "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+            ",", "True", ",", "False", ",", "True", ",", "True"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "False", ",", "True", ",", "False", ",", "False", ",", "True"}], 
+           "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+           "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+           "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+           "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], ",", 
+     RowBox[{"!", 
+      RowBox[{"2", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"!", 
+             RowBox[{"1", "\[LeftDoubleBracket]", 
+              RowBox[{"1", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "True", ",", "False", ",", "True", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "False", ",", "True", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "False", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "False", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "True", ",", "True", ",", "True", ",", 
+                   "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+            ",", 
+            RowBox[{"!", 
+             RowBox[{"1", "\[LeftDoubleBracket]", 
+              RowBox[{"2", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"!", 
+                    RowBox[{"1", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "False", ",", "True", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "False", ",", "True", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "False", ",", "False", ",", "False", ",", 
+                    "True"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "True", ",", "True", ",", "True", ",", "True", ",", 
+                    "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+                   ",", "True", ",", "False", ",", "True", ",", "True"}], 
+                  "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "False", ",", "True", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "False", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "False", ",", "False", ",", "False", ",", 
+                   "True"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "True", ",", "True", ",", "True", ",", "True", ",", 
+                   "True"}], "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}], 
+            ",", "False", ",", "True", ",", "True"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "False", ",", "True", ",", "False", ",", "False", ",", "True"}], 
+           "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+           "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+           "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+           "}"}]}], "}"}]}], "\[RightDoubleBracket]"}]}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.7028215500170894`*^9, 3.702821580235056*^9}, {
+  3.7028218161627903`*^9, 3.702821820492508*^9}, {3.702822221135716*^9, 
+  3.7028222488292418`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lOut", "[", 
+  RowBox[{"1", ",", "1", ",", "ar1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7028215845143375`*^9, 3.70282158869967*^9}, {
+  3.70282171713253*^9, 3.7028217173059826`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"False", ",", 
+   RowBox[{"{", 
+    RowBox[{"False", ",", "True"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7028215890248113`*^9, {3.702821709444621*^9, 3.702821719958576*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"rev", ",", "HoldFirst"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7028210052500315`*^9, 3.702821009879876*^9}, {
+  3.702821555379052*^9, 3.7028215644635177`*^9}, {3.702821705911912*^9, 
+  3.7028218087360773`*^9}, {3.7028218855798006`*^9, 3.7028218859211426`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ar1", " ", "=", " ", 
+  RowBox[{"cAr", "[", 
+   RowBox[{"5", ",", "5"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.702819672515828*^9, 3.702819680859949*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"False", ",", "False", ",", "False", ",", "True", ",", "True"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"True", ",", "False", ",", "False", ",", "False", ",", "True"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"True", ",", "False", ",", "True", ",", "True", ",", "False"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"False", ",", "False", ",", "True", ",", "False", ",", "True"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"False", ",", "True", ",", "False", ",", "False", ",", "True"}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.702819681433325*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Attributes", "[", "lOut", "]"}]], "Input",
+ CellChangeTimes->{{3.702821644027155*^9, 3.7028216477516036`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "HoldFirst", "}"}]], "Output",
+ CellChangeTimes->{
+  3.702821647988072*^9, {3.70282173742625*^9, 3.7028217428323593`*^9}, {
+   3.702821784690316*^9, 3.702821810409766*^9}, 3.7028222270040255`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"displayArray", "[", "ar1", "]"}]}]], "Input",
+ CellChangeTimes->{{3.7028196913491154`*^9, 3.7028197129627595`*^9}, {
+  3.702821915299909*^9, 3.7028219228768997`*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   $CellContext`displayArray[$CellContext`ar1], StandardForm],
+  ImageSizeCache->{324., {159., 164.}}]], "Output",
+ CellChangeTimes->{
+  3.7028197132726088`*^9, {3.702821909263912*^9, 3.7028219234020877`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Column", "[", 
+  RowBox[{"Table", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Row", "[", "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"DynamicModule", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"x", " ", "=", " ", 
+            RowBox[{"color", "[", 
+             RowBox[{"r", ",", "c", ",", "ar1"}], "]"}]}], ",", " ", 
+           RowBox[{"row", " ", "=", " ", "r"}], ",", " ", 
+           RowBox[{"col", " ", "=", " ", "c"}]}], "}"}], ",", 
+         RowBox[{"Button", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "@", 
+            RowBox[{"ArrayPlot", "[", 
+             RowBox[{"{", 
+              RowBox[{"{", 
+               RowBox[{"color", "[", 
+                RowBox[{"row", ",", " ", "col", ",", "ar1"}], "]"}], "}"}], 
+              "}"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"x", "=", 
+              RowBox[{"Abs", "[", 
+               RowBox[{"x", "-", "1"}], "]"}]}], ",", 
+             RowBox[{"ReplacePart", "[", 
+              RowBox[{"ar1", ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"r", ",", "c"}], "}"}], "\[Rule]", " ", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"x", "\[Equal]", "1"}], ",", "True", ",", "False"}],
+                  "]"}]}]}], "]"}]}], "}"}]}], "]"}]}], "]"}], 
+       "\[IndentingNewLine]", ",", 
+       RowBox[{"{", 
+        RowBox[{"r", ",", "5"}], "}"}]}], "]"}], "\[IndentingNewLine]", "]"}],
+     "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{"c", ",", "5"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7028199316438217`*^9, 3.702819938586049*^9}, {
+  3.702820009436535*^9, 3.7028200364900165`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{3.7028199394165325`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"createInteractive", "[", "ar1", "]"}]], "Input",
+ CellChangeTimes->{{3.7028210129111953`*^9, 3.702821016908601*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 1}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 2}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 3}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 0, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 4}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]},
+    {
+     TemplateBox[{
+      DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         1, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         2, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         3, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         4, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}],
+       DynamicModuleBox[{$CellContext`x$$ = 1, $CellContext`row$$ = 
+         5, $CellContext`col$$ = 5}, 
+        ButtonBox[
+         DynamicBox[
+          ToBoxes[
+           ArrayPlot[{{
+              $CellContext`color[$CellContext`row$$, $CellContext`col$$, \
+$CellContext`ar1]}}], StandardForm]], 
+         ButtonFunction :> {$CellContext`x$$ = Abs[$CellContext`x$$ - 1], 
+           Part[$CellContext`ar1, $CellContext`row$$, $CellContext`col$$] = 
+           If[$CellContext`x$$ == 1, True, False]}, Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"], 
+        DynamicModuleValues :> {}]},
+      "RowDefault"]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{3.7028210174559197`*^9}]
+}, Open  ]]
+},
+WindowSize->{1520, 805},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1095, 33, 64, "Input"],
+Cell[1656, 55, 351, 10, 27, "Input"],
+Cell[2010, 67, 737, 19, 118, "Input"],
+Cell[2750, 88, 11837, 307, 676, "Input"],
+Cell[CellGroupData[{
+Cell[14612, 399, 159, 3, 27, "Input"],
+Cell[14774, 404, 101, 1, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14912, 410, 156, 3, 27, "Input"],
+Cell[15071, 415, 177, 4, 85, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15285, 424, 211, 4, 27, "Input"],
+Cell[15499, 430, 14510, 353, 262, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30046, 788, 209, 4, 27, "Input"],
+Cell[30258, 794, 226, 6, 27, "Output"]
+}, Open  ]],
+Cell[30499, 803, 338, 6, 27, "Input"],
+Cell[CellGroupData[{
+Cell[30862, 813, 181, 4, 27, "Input"],
+Cell[31046, 819, 654, 18, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31737, 842, 134, 2, 27, "Input"],
+Cell[31874, 846, 224, 4, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32135, 855, 217, 4, 27, "Input"],
+Cell[32355, 861, 244, 5, 336, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32636, 871, 1875, 47, 154, "Input"],
+Cell[34514, 920, 16217, 347, 490, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50768, 1272, 140, 2, 27, "Input"],
+Cell[50911, 1276, 16217, 347, 490, "Output"]
+}, Open  ]]
+}
+]
+*)
+

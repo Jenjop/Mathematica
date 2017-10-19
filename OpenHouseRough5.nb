@@ -1,0 +1,775 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31031,        767]
+NotebookOptionsPosition[     30036,        728]
+NotebookOutlinePosition[     30384,        743]
+CellTagsIndexPosition[     30341,        740]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"color", "[", 
+    RowBox[{"a_", ",", "r_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{"Boole", "[", 
+    RowBox[{"a", "[", 
+     RowBox[{"[", 
+      RowBox[{"r", ",", "c"}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rAr", "[", 
+    RowBox[{"r_", ",", "c_"}], "]"}], ":=", " ", 
+   RowBox[{"RandomChoice", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"True", ",", "False"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "c"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fAr", " ", "[", 
+    RowBox[{"r_", ",", "c_"}], "]"}], ":=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{"False", ",", "r"}], "]"}], ",", "c"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tAr", "[", 
+    RowBox[{"r_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{"True", ",", "r"}], "]"}], ",", "c"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rev", "[", 
+    RowBox[{"a_", ",", "r_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"1", "\[LessEqual]", " ", "r", " ", "\[LessEqual]", " ", 
+      RowBox[{"Length", "@", "a"}]}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"1", "\[LessEqual]", "c", "\[LessEqual]", " ", 
+        RowBox[{"Length", "@", 
+         RowBox[{"a", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", 
+         RowBox[{"[", 
+          RowBox[{"r", ",", "c"}], "]"}], "]"}], "=", 
+        RowBox[{"!", 
+         RowBox[{"a", "[", 
+          RowBox[{"[", 
+           RowBox[{"r", ",", "c"}], "]"}], "]"}]}]}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lOut", "[", 
+   RowBox[{"a_", ",", "r_", ",", "c_"}], "]"}], ":=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rev", "[", 
+     RowBox[{"a", ",", "r", ",", "c"}], "]"}], ",", 
+    RowBox[{"(*", 
+     RowBox[{"(", 
+      RowBox[{"r", ",", "c"}], ")"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"rev", "[", 
+     RowBox[{"a", ",", 
+      RowBox[{"r", "-", "1"}], ",", "c"}], "]"}], ",", 
+    RowBox[{"rev", "[", 
+     RowBox[{"a", ",", 
+      RowBox[{"r", "+", "1"}], ",", "c"}], "]"}], ",", 
+    RowBox[{"rev", "[", 
+     RowBox[{"a", ",", "r", ",", 
+      RowBox[{"c", "-", "1"}]}], "]"}], ",", 
+    RowBox[{"rev", "[", 
+     RowBox[{"a", ",", "r", ",", 
+      RowBox[{"c", "+", "1"}]}], "]"}]}], "\[IndentingNewLine]", 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"modifyArray", "[", "a_", "]"}], ":=", 
+  RowBox[{"Row", "[", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Column", "[", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"DynamicModule", "[", 
+         RowBox[{
+          RowBox[{"{", " ", 
+           RowBox[{
+            RowBox[{"row", " ", "=", " ", "r"}], ",", " ", 
+            RowBox[{"col", " ", "=", " ", "c"}]}], "}"}], ",", 
+          RowBox[{"Button", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "@", 
+             RowBox[{"ArrayPlot", "[", 
+              RowBox[{"{", 
+               RowBox[{"{", 
+                RowBox[{"color", "[", 
+                 RowBox[{"a", ",", "row", ",", " ", "col"}], "]"}], "}"}], 
+               "}"}], "]"}]}], ",", 
+            RowBox[{"rev", "[", 
+             RowBox[{"a", ",", "row", ",", "col"}], "]"}]}], "]"}]}], "]"}], 
+        "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"r", ",", 
+          RowBox[{"Length", "@", "a"}]}], "}"}]}], "]"}], 
+      "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", 
+       RowBox[{"Length", "@", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"interactiveArray", "[", "a_", "]"}], ":=", 
+  RowBox[{"Row", "[", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Column", "[", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"DynamicModule", "[", 
+         RowBox[{
+          RowBox[{"{", " ", 
+           RowBox[{
+            RowBox[{"row", " ", "=", " ", "r"}], ",", " ", 
+            RowBox[{"col", " ", "=", " ", "c"}]}], "}"}], ",", 
+          RowBox[{"Button", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "@", 
+             RowBox[{"ArrayPlot", "[", 
+              RowBox[{"{", 
+               RowBox[{"{", 
+                RowBox[{"color", "[", 
+                 RowBox[{"a", ",", "row", ",", " ", "col"}], "]"}], "}"}], 
+               "}"}], "]"}]}], ",", 
+            RowBox[{"lOut", "[", 
+             RowBox[{"a", ",", "row", ",", "col"}], "]"}]}], "]"}]}], "]"}], 
+        "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"r", ",", 
+          RowBox[{"Length", "@", "a"}]}], "}"}]}], "]"}], 
+      "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", 
+       RowBox[{"Length", "@", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Thread", "[", 
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "rev", ",", "lOut", ",", "modifyArray", ",", "interactiveArray"}], "}"}],
+     ",", "HoldFirst"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"c", " ", "-", " ", 
+    RowBox[{"Column", " ", "for", " ", "Button", "\[IndentingNewLine]", "r"}],
+     " ", "-", " ", 
+    RowBox[{"Row", " ", "for", " ", "Button", "\[IndentingNewLine]", "l"}], 
+    " ", "-", " ", 
+    RowBox[{
+    "Length", " ", "for", " ", "Button", "\[IndentingNewLine]", "cc"}], " ", 
+    "-", " ", 
+    RowBox[{"Used", " ", "Column", "\[IndentingNewLine]", "rc"}], " ", "-", 
+    " ", 
+    RowBox[{"Used", " ", "Row", "\[IndentingNewLine]", "lc"}], " ", "-", " ", 
+    RowBox[{"Used", " ", "Length", "\[IndentingNewLine]", "style"}], " ", "-",
+     " ", 
+    RowBox[{
+    "Style", " ", "for", " ", "created", " ", "array", "\[IndentingNewLine]", 
+     "square"}], " ", "-", " ", 
+    RowBox[{
+    "Locked", " ", "to", " ", "square", " ", "dimensions", 
+     "\[IndentingNewLine]", "continuous"}], " ", "-", " ", 
+    RowBox[{"Continuous", " ", "evaluation", " ", "of", " ", "dimensions"}]}],
+    "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7028249176385674`*^9, 3.7028249231842637`*^9}, {
+   3.702826258719256*^9, 3.702826269107519*^9}, {3.7028263771178703`*^9, 
+   3.7028264025615797`*^9}, {3.7028267265372667`*^9, 3.702826761019619*^9}, {
+   3.702826832286561*^9, 3.702826834203684*^9}, {3.7028272531855993`*^9, 
+   3.7028272533398476`*^9}, {3.703333044488033*^9, 3.7033330571730213`*^9}, {
+   3.703340618310255*^9, 3.703340618473467*^9}, {3.703367610715576*^9, 
+   3.7033677024349723`*^9}, {3.7033700627838845`*^9, 
+   3.7033700694110646`*^9}, {3.703370119825187*^9, 3.7033701770397935`*^9}, {
+   3.703371317590273*^9, 3.7033715791612296`*^9}, 3.7033738323360324`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"DynamicModule", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"mainArray", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"style", "\[Equal]", "\"\<Uniform\>\""}], ",", " ", 
+         RowBox[{"If", "[", 
+          RowBox[{"square", ",", 
+           RowBox[{"tAr", "[", 
+            RowBox[{"lc", ",", "lc"}], "]"}], ",", 
+           RowBox[{"tAr", "[", 
+            RowBox[{"cc", ",", "rc"}], "]"}]}], "]"}], ",", 
+         RowBox[{"If", "[", 
+          RowBox[{"square", ",", 
+           RowBox[{"rAr", "[", 
+            RowBox[{"lc", ",", "lc"}], "]"}], ",", 
+           RowBox[{"rAr", "[", 
+            RowBox[{"cc", ",", "rc"}], "]"}]}], "]"}]}], "]"}]}], "}"}], ",", 
+     RowBox[{"Dynamic", "@", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ContainsOnly", "[", 
+         RowBox[{
+          RowBox[{"mainArray", "//", "Flatten"}], ",", 
+          RowBox[{"{", "False", "}"}]}], "]"}], ",", 
+        RowBox[{"Column", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<YOU WIN\>\"", ",", 
+           RowBox[{"interactiveArray", "[", "mainArray", "]"}]}], "}"}], 
+         "]"}], ",", 
+        RowBox[{"interactiveArray", "[", "mainArray", "]"}]}], "]"}]}]}], 
+    "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"Column", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"False", "\[Rule]", " ", 
+           RowBox[{"PaneSelector", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"True", "\[Rule]", " ", 
+                RowBox[{"Row", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Column: \>\"", ",", 
+                   RowBox[{"Dynamic", "@", "cc"}], ",", "\"\<\>\"", ",", 
+                   RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"cc", ",", "2", ",", "\"\<\>\""}], "}"}], ",", 
+                    "1", ",", "10", ",", "1"}], "}"}]}]}], "}"}], "]"}]}], 
+               ",", 
+               RowBox[{"False", "\[Rule]", " ", 
+                RowBox[{"Row", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Column: \>\"", ",", 
+                   RowBox[{"Dynamic", "@", "c"}], ",", "\"\<\>\"", ",", 
+                   RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"c", ",", "1", ",", "\"\<\>\""}], "}"}], ",", "1",
+                     ",", "10", ",", "1"}], "}"}]}]}], "}"}], "]"}]}]}], 
+              "}"}], ",", "continuous"}], "]"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"True", "\[Rule]", " ", 
+           RowBox[{"PaneSelector", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"True", "\[Rule]", " ", 
+                RowBox[{"Row", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Length: \>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Dynamic", "@", "lc"}], "\"\<\>\""}], ",", 
+                   RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"lc", ",", "2", ",", "\"\<\>\""}], "}"}], ",", 
+                    "1", ",", "10", ",", "1"}], "}"}]}]}], "}"}], "]"}]}], 
+               ",", 
+               RowBox[{"False", "\[Rule]", " ", 
+                RowBox[{"Row", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Length: \>\"", ",", 
+                   RowBox[{"Dynamic", "@", "l"}], ",", "\"\<\>\"", ",", 
+                   RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"l", ",", "1", ",", "\"\<\>\""}], "}"}], ",", "1",
+                     ",", "10", ",", "1"}], "}"}]}]}], "}"}], "]"}]}]}], 
+              "}"}], ",", "continuous"}], "]"}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", "square"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PaneSelector", "[", 
+       RowBox[{
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"False", "\[Rule]", " ", 
+           RowBox[{"PaneSelector", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"True", "\[Rule]", " ", 
+                RowBox[{"Row", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Row: \>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Dynamic", "@", "rc"}], "\"\<\>\""}], ",", 
+                   RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"rc", ",", "2", ",", "\"\<\>\""}], "}"}], ",", 
+                    "1", ",", "10", ",", "1"}], "}"}]}]}], "}"}], "]"}]}], 
+               ",", 
+               RowBox[{"False", "\[Rule]", " ", 
+                RowBox[{"Row", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Row: \>\"", ",", 
+                   RowBox[{"Dynamic", "@", "r"}], ",", "\"\<\>\"", ",", 
+                   RowBox[{"Control", "@", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"r", ",", "1", ",", "\"\<\>\""}], "}"}], ",", "1",
+                     ",", "10", ",", "1"}], "}"}]}]}], "}"}], "]"}]}]}], 
+              "}"}], ",", "continuous"}], "]"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"True", "\[Rule]", 
+           RowBox[{"(", 
+            RowBox[{"Nothing", ";"}], ")"}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", "square"}], "]"}]}], "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Column", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Control", "@", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"style", ",", "\"\<Uniform\>\"", ",", "\"\<Style\>\""}], 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Uniform\>\"", ",", "\"\<Random\>\""}], "}"}], ",", 
+         "SetterBar"}], "}"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Control", "@", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"square", ",", "True", ",", "\"\<Square\>\""}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"True", ",", "False"}], "}"}], ",", "Checkbox"}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Control", "@", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "continuous", ",", "True", ",", 
+              "\"\<Continuous Evaluation\>\""}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"False", ",", "True"}], "}"}], ",", "Checkbox"}], 
+           "}"}]}], ",", "\"\<       \>\"", ",", "\[IndentingNewLine]", 
+         RowBox[{"PaneSelector", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"False", "\[Rule]", " ", 
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<Set Dimensions\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{"If", "[", 
+                  RowBox[{"square", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"rc", "=", 
+                    RowBox[{"cc", "=", " ", 
+                    RowBox[{"r", "=", 
+                    RowBox[{"c", "=", "l"}]}]}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"rc", " ", "=", " ", "r"}], ",", 
+                    RowBox[{"cc", " ", "=", 
+                    RowBox[{"l", "=", " ", "c"}]}]}], "}"}]}], "]"}], "}"}]}],
+                "]"}]}], ",", "\[IndentingNewLine]", 
+             RowBox[{"True", "\[Rule]", " ", 
+              RowBox[{"(", 
+               RowBox[{"Nothing", ";"}], ")"}]}]}], "}"}], ",", 
+           "\[IndentingNewLine]", "continuous"}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+    "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Initialization", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"rf", " ", "=", " ", "1"}], ",", " ", 
+      RowBox[{"cf", " ", "=", " ", "1"}]}], "}"}]}], ",", 
+   RowBox[{"ContinuousAction", "\[Rule]", "False"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQvWvyjn1zpr92VE8oOw2iu7kWXwLRUYo110G0XMrn
++yB6lxLDMxD9cb/SGxC94fiCryBaZh3fv7lAuuXEM8Z5QPp2nY8oiM5kXCEG
+ok859MiA6H2vlyqDaH/bF9Egure6KQ5EX4qUSQHRV2e8yQTR/dnZRSD66Wzb
+bhBtIhE1DUTX5DktAdE5WUfWgeiiR2qbQPRcr4/bQHTnY5k9IHrSq6mHQHTP
+lYdg+ruIxWcQXbWhhn0+kE6N61QC0RIZFsog+ssFI00QbZv/QxdEP18iYQWi
+wz722oDopzdYXEH0XWdRHxDdniAcDKKvLPQKB6szKogB0wEc8SAaAEliuLk=
+
+  "]],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`c$$ = 1, $CellContext`cc$$ = 
+    2, $CellContext`continuous$$ = True, $CellContext`l$$ = 
+    1, $CellContext`lc$$ = 4, $CellContext`r$$ = 1, $CellContext`rc$$ = 
+    2, $CellContext`square$$ = True, $CellContext`style$$ = "Uniform", 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`cc$$], 2, ""}, 1, 10, 1}, {{
+       Hold[$CellContext`c$$], 1, ""}, 1, 10, 1}, {{
+       Hold[$CellContext`lc$$], 2, ""}, 1, 10, 1}, {{
+       Hold[$CellContext`l$$], 1, ""}, 1, 10, 1}, {{
+       Hold[$CellContext`rc$$], 2, ""}, 1, 10, 1}, {{
+       Hold[$CellContext`r$$], 1, ""}, 1, 10, 1}, {
+      Hold[
+       Column[{
+         PaneSelector[{False -> PaneSelector[{True -> Row[{"Column: ", 
+                 Dynamic[$CellContext`cc$$], "", 
+                 Manipulate`Place[1]}], False -> Row[{"Column: ", 
+                 Dynamic[$CellContext`c$$], "", 
+                 Manipulate`Place[2]}]}, $CellContext`continuous$$], True -> 
+           PaneSelector[{
+             True -> Row[{"Length: ", "" Dynamic[$CellContext`lc$$], 
+                 Manipulate`Place[3]}], False -> Row[{"Length: ", 
+                 Dynamic[$CellContext`l$$], "", 
+                 Manipulate`Place[
+                 4]}]}, $CellContext`continuous$$]}, $CellContext`square$$], 
+         PaneSelector[{
+          False -> PaneSelector[{
+             True -> Row[{"Row: ", "" Dynamic[$CellContext`rc$$], 
+                 Manipulate`Place[5]}], False -> Row[{"Row: ", 
+                 Dynamic[$CellContext`r$$], "", 
+                 Manipulate`Place[6]}]}, $CellContext`continuous$$], True -> 
+           Null}, $CellContext`square$$]}]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`style$$], "Uniform", "Style"}, {
+      "Uniform", "Random"}}, {{
+       Hold[$CellContext`square$$], True, "Square"}, {True, False}}, {{
+       Hold[$CellContext`continuous$$], True, "Continuous Evaluation"}, {
+      False, True}}, {
+      Hold[
+       Column[{
+         Manipulate`Place[7], 
+         Manipulate`Place[8], 
+         Row[{
+           Manipulate`Place[9], "       ", 
+           PaneSelector[{False -> Button["Set Dimensions", {
+                
+                If[$CellContext`square$$, {$CellContext`rc$$ = \
+($CellContext`cc$$ = ($CellContext`r$$ = ($CellContext`c$$ = \
+$CellContext`l$$)))}, {$CellContext`rc$$ = $CellContext`r$$, \
+$CellContext`cc$$ = ($CellContext`l$$ = $CellContext`c$$)}]}], True -> 
+             Null}, $CellContext`continuous$$]}]}]], 
+      Manipulate`Dump`ThisIsNotAControl}}, Typeset`size$$ = {
+    403., {204., 211.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`cc$6446$$ = 
+    0, $CellContext`c$6447$$ = 0, $CellContext`lc$6448$$ = 
+    0, $CellContext`l$6449$$ = 0, $CellContext`rc$6450$$ = 
+    0, $CellContext`r$6451$$ = 0, $CellContext`style$6452$$ = 
+    False, $CellContext`square$6453$$ = 
+    False, $CellContext`continuous$6454$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`c$$ = 1, $CellContext`cc$$ = 
+        2, $CellContext`continuous$$ = True, $CellContext`l$$ = 
+        1, $CellContext`lc$$ = 2, $CellContext`r$$ = 1, $CellContext`rc$$ = 
+        2, $CellContext`square$$ = True, $CellContext`style$$ = "Uniform"}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`cc$$, $CellContext`cc$6446$$, 0], 
+        Hold[$CellContext`c$$, $CellContext`c$6447$$, 0], 
+        Hold[$CellContext`lc$$, $CellContext`lc$6448$$, 0], 
+        Hold[$CellContext`l$$, $CellContext`l$6449$$, 0], 
+        Hold[$CellContext`rc$$, $CellContext`rc$6450$$, 0], 
+        Hold[$CellContext`r$$, $CellContext`r$6451$$, 0], 
+        Hold[$CellContext`style$$, $CellContext`style$6452$$, False], 
+        Hold[$CellContext`square$$, $CellContext`square$6453$$, False], 
+        Hold[$CellContext`continuous$$, $CellContext`continuous$6454$$, 
+         False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      DynamicModule[{$CellContext`mainArray = 
+         If[$CellContext`style$$ == "Uniform", 
+           If[$CellContext`square$$, 
+            $CellContext`tAr[$CellContext`lc$$, $CellContext`lc$$], 
+            $CellContext`tAr[$CellContext`cc$$, $CellContext`rc$$]], 
+           If[$CellContext`square$$, 
+            $CellContext`rAr[$CellContext`lc$$, $CellContext`lc$$], 
+            $CellContext`rAr[$CellContext`cc$$, $CellContext`rc$$]]]}, 
+        Dynamic[
+         If[
+          ContainsOnly[
+           Flatten[$CellContext`mainArray], {False}], 
+          Column[{"YOU WIN", 
+            $CellContext`interactiveArray[$CellContext`mainArray]}], 
+          $CellContext`interactiveArray[$CellContext`mainArray]]]], 
+      "Specifications" :> {{{$CellContext`cc$$, 2, ""}, 1, 10, 1, 
+         ControlPlacement -> 1}, {{$CellContext`c$$, 1, ""}, 1, 10, 1, 
+         ControlPlacement -> 2}, {{$CellContext`lc$$, 2, ""}, 1, 10, 1, 
+         ControlPlacement -> 3}, {{$CellContext`l$$, 1, ""}, 1, 10, 1, 
+         ControlPlacement -> 4}, {{$CellContext`rc$$, 2, ""}, 1, 10, 1, 
+         ControlPlacement -> 5}, {{$CellContext`r$$, 1, ""}, 1, 10, 1, 
+         ControlPlacement -> 6}, 
+        Column[{
+          PaneSelector[{False -> PaneSelector[{True -> Row[{"Column: ", 
+                  Dynamic[$CellContext`cc$$], "", 
+                  Manipulate`Place[1]}], False -> Row[{"Column: ", 
+                  Dynamic[$CellContext`c$$], "", 
+                  Manipulate`Place[2]}]}, $CellContext`continuous$$], True -> 
+            PaneSelector[{
+              True -> Row[{"Length: ", "" Dynamic[$CellContext`lc$$], 
+                  Manipulate`Place[3]}], False -> Row[{"Length: ", 
+                  Dynamic[$CellContext`l$$], "", 
+                  Manipulate`Place[
+                  4]}]}, $CellContext`continuous$$]}, $CellContext`square$$], 
+          
+          PaneSelector[{
+           False -> PaneSelector[{
+              True -> Row[{"Row: ", "" Dynamic[$CellContext`rc$$], 
+                  Manipulate`Place[5]}], False -> Row[{"Row: ", 
+                  Dynamic[$CellContext`r$$], "", 
+                  Manipulate`Place[6]}]}, $CellContext`continuous$$], True -> 
+            Null}, $CellContext`square$$]}], {{$CellContext`style$$, 
+          "Uniform", "Style"}, {"Uniform", "Random"}, ControlType -> 
+         SetterBar, ControlPlacement -> 
+         7}, {{$CellContext`square$$, True, "Square"}, {True, False}, 
+         ControlType -> Checkbox, ControlPlacement -> 
+         8}, {{$CellContext`continuous$$, True, "Continuous Evaluation"}, {
+         False, True}, ControlType -> Checkbox, ControlPlacement -> 9}, 
+        Column[{
+          Manipulate`Place[7], 
+          Manipulate`Place[8], 
+          Row[{
+            Manipulate`Place[9], "       ", 
+            PaneSelector[{False -> Button["Set Dimensions", {
+                 
+                 If[$CellContext`square$$, {$CellContext`rc$$ = \
+($CellContext`cc$$ = ($CellContext`r$$ = ($CellContext`c$$ = \
+$CellContext`l$$)))}, {$CellContext`rc$$ = $CellContext`r$$, \
+$CellContext`cc$$ = ($CellContext`l$$ = $CellContext`c$$)}]}], True -> 
+              Null}, $CellContext`continuous$$]}]}]}, 
+      "Options" :> {ContinuousAction -> False}, "DefaultOptions" :> {}],
+     ImageSizeCache->{454., {300., 307.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`rf = 1, $CellContext`cf = 1}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.7033704887031403`*^9, 3.703370517656675*^9}, {
+  3.7033706651880035`*^9, 3.7033706982414713`*^9}, {3.7033707462888966`*^9, 
+  3.7033708467799296`*^9}, {3.703370932757485*^9, 3.7033710466152377`*^9}, {
+  3.7033711276726418`*^9, 3.7033711582336683`*^9}, {3.7033711973260336`*^9, 
+  3.703371203360052*^9}, {3.703371233465152*^9, 3.70337128783476*^9}, {
+  3.7033716298772926`*^9, 3.703371632351698*^9}, {3.7033717062960825`*^9, 
+  3.703371724302225*^9}, {3.703371757494478*^9, 3.7033718423803277`*^9}, {
+  3.7033719428519945`*^9, 3.7033719434087124`*^9}, {3.70337212549072*^9, 
+  3.7033721551519146`*^9}, {3.7033722423738785`*^9, 3.703372263170019*^9}, {
+  3.7033723325171175`*^9, 3.703372345629038*^9}, {3.703372385116259*^9, 
+  3.703372542690346*^9}, {3.703372683262459*^9, 3.703372683679289*^9}, {
+  3.7033741161850853`*^9, 3.703374116609313*^9}, {3.7033784002110367`*^9, 
+  3.7033784249968376`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mainArray", "[", 
+  RowBox[{"[", 
+   RowBox[{"All", ",", "All"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.703372199922035*^9, 3.703372211325184*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+     ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+     ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+     ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+     ",", "True"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.703372201112162*^9, 3.7033722116954613`*^9}, 
+   3.7033724041944637`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ContainsOnly", "[", 
+  RowBox[{"test", ",", 
+   RowBox[{"{", "True", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7033722959644923`*^9, 3.7033723072962146`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.703372271329069*^9, 3.7033723112400045`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"test", " ", "=", " ", 
+  RowBox[{"mainArray", "//", "Flatten"}]}]], "Input",
+ CellChangeTimes->{{3.7033722919454613`*^9, 3.703372323068736*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+   ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", 
+   "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+   ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", 
+   "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.7033722773538523`*^9, 3.7033723233224688`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Flatten", "@", "test"}]], "Input",
+ CellChangeTimes->{{3.7033723123678727`*^9, 3.703372318906578*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+   ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", 
+   "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+   ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", 
+   "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.703372312993378*^9, 3.7033723191836205`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Quit", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7033724188360176`*^9, 3.703372420125429*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PseudoInverse", "@", 
+   RowBox[{"IdentityMatrix", "[", "5", "]"}]}], "//", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.7033746571146584`*^9, 3.7033746712984266`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", "0", "0", "0"},
+     {"0", "1", "0", "0", "0"},
+     {"0", "0", "1", "0", "0"},
+     {"0", "0", "0", "1", "0"},
+     {"0", "0", "0", "0", "1"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.7033746608814926`*^9, 3.7033746717190075`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1536, 821},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7394, 195, 731, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[7977, 219, 9090, 217, 468, "Input"],
+Cell[17070, 438, 9150, 171, 624, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26257, 614, 179, 4, 30, "Input"],
+Cell[26439, 620, 713, 20, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27189, 645, 188, 4, 30, "Input"],
+Cell[27380, 651, 100, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27517, 657, 168, 3, 30, "Input"],
+Cell[27688, 662, 509, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28234, 676, 126, 2, 30, "Input"],
+Cell[28363, 680, 507, 9, 30, "Output"]
+}, Open  ]],
+Cell[28885, 692, 120, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[29030, 698, 206, 4, 30, "Input"],
+Cell[29239, 704, 781, 21, 168, "Output"]
+}, Open  ]]
+}
+]
+*)
+
