@@ -1,0 +1,791 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29393,        781]
+NotebookOptionsPosition[     28302,        739]
+NotebookOutlinePosition[     28649,        754]
+CellTagsIndexPosition[     28606,        751]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gameOfLife", "=", 
+   RowBox[{"{", 
+    RowBox[{"224", ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "2", ",", "2"}], "}"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"puffer", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"8", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"10", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"11", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"12", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"15", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"15", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"16", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"17", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"17", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"18", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"18", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"18", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"18", ",", "5"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"glider", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.697810569027193*^9, 3.6978106087540045`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Mean", "[", 
+   RowBox[{"CellularAutomaton", "[", 
+    RowBox[{"GameOfLife", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"SparseArray", "[", 
+        RowBox[{"Puffer", "->", "1"}], "]"}], ",", "0"}], "}"}], ",", "200"}],
+     "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6978106520078125`*^9, 3.697810653744705*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[RasterBox[CompressedData["
+1:eJztnVmoJFcZxwcXkPEhBleCC5HgGsiCiriV6IMOomJwAfUhRoIKmrgmoiKE
+CFFBQ9SoqKA+OApRMU6MM8ExThbCxMTZlzu5k0nECOqgBhXjg5LuW/d3xvtr
+vlT37e5b1d3fwPDn3OqqOqfq+59vPafOvOjSCy5+1KZNm7b0/l/W+/+Hi8/d
+/NIXnagSNwb//Ljr3/jCvx6v3vfLv1933jX3Vlu//IR7bvj9va33KzEx8UTh
+Jfjj86555o++c7y65J0f+dtZbziefE1M7ADCz+fft/czP61O8dS44/Kv/KBH
+2eqcK9/ym+//Z7n1ficmLhLCU7fRp/D04/998PynPXa5evFz9j/62m2n+Mrx
+tseRmDjPaH1q3v784OkXffvty4WnD17XJ+Zy+TvY9jgSExcBI/8UHlrPok/h
+d9v9T0xcBCTea37CR9u79mc5v+1xJCYuAsK/f7+pz9R7ip2L3Us8iTY85Xep
+XxMTN56v8BD9+ordF7zu8x86NsBf28P2cxMTEyeP5E2dX4W/8NFxYdvPydfE
+xI1D61f0KX4rbdD516yXSEzceERPYgdj/xrRu2kPJya2h9i3V7z2Hzv+98ml
+EmcC0a+f+t5HL3v8zccKwu/kbWLixiF8I06Mn2p+cvyqP36sp3GPVq/54IEv
+fvq5S9WK+n36sQF/uO1xJSbOI+LHEh9Gn8JP61v4iz7mPH4f1UklJiaOj65v
+gq/ozcdcu+1dDx06WhC+cpz4FHzGvkZPZ1wqMXHyiF4kvgQ/bz7jiX+64s6l
+oj9po18dp4KnGZdKTJwewjN46bjS7Tu/evYnPne08JI2+tV1FfA/7ePExMkh
+PIrqEcG7LnzSh9//qiOFp8Sd4LPztuhX70vR9ngTE2cZXbcEWs/aDsZedp1x
+pGfbHmdi4jyheeu4E3oVvtKG1yB8tR2ccafExMkjvIJ38HXLaW/93SX3Hwnz
+r17H7viw87PJ38TE8dH5WHiJPrUdzHHs5Wi9HfzN+FNi4vgIn2wXu26CuBNx
+JsebXG/sfCx5XniLnk19m5gYI/wwb9Cf8A8967gwvHW9Iuh6Ka/L475ut/1c
+EhMfiS/YhdPaXyXyF81X7NnT+3/dcnjAP0WP4sfCV3hNHIrz+L33a/N+FY4j
+p55N7BLCH+QcRH4nVTeP3Ef6y/MEvOkd/O5frj4yUN/f72VP8VZLW5/cP1S9
++6FD33z9aQerL33hn69+4OThon/hN3rX+506L5vraROngfazzKsmhC9vXlE4
+h6uv9aV766Ei1/b7bD+Oej/nU10n6P1d8E/NN/TtUz/bn1kOlX6fddtLfrL9
+8v3VM8688QO37zxQ9K3rF52f9Tp4x58SZxO7EocwP80j23Vug8gz9iJ6Cb2F
+fLtOyHX4TfczH2yPen2N47vYu/QPnoLvWRnGntLvt638O8Vj7GCuZ3uZ/sBj
+78vYNL5sd7MdxSc2ir+RnkK+mvgJwhP4iNzDB+Q6ymdGPPZ+D9yP33FdeOHz
+sXtd/8B5xJ2wh7F/6T/ncxy7Ab4yDo/f+tvPM3E20TydVN6ulpc7V+V0d8hT
++3XWB8Py1n4qaLm2XoIP2KPwx/FXx3HhD3rSdcDWe9zXvON8eAxf0au0HTc2
+7x2ncv7W4xjWjsh2N9vjfsfQfK95cEdB+5eeJ+AHeszrxpxPBM0T89zrR5FT
+7GbsTNrIu/Mn8IK/wxuQ69IP1//yO/Qm9+G68JN5gzb+a69vzzrnyn3Vt/b8
+647fXniw2MX0G2T+sT1sex9s2x9bLzqP3XZ/ZsWPNf/gh/cl8jpN25noB68v
+s/41v60HOR9+0oY32Mf2G2te3FLk3vW89i/hC237rdzP69H7nXz57v3lPvAa
+nnIc/5U4cT3+u6uVy59xoPAW+x7+cz0/H96r5z3nt/ydAcvJsHGIpt8N6385
+H+Z+j/r9r/X6eRE/Ju03TssPjexZ5MX+nfUezxl58vpP7EXOd14RObX9ynXs
+L8IH9BU8qMfx6/L3+vq/Ktfh+sRnT179jV3Pu29v0X/wBv3JfeEPfPU8wfkg
+vOc+P1zp3r5yv17nehPg3sJX62PH2RwH8zp5xuf1A8w3nB/5T5HcRsjvPI+6
+f54n3LY96O+aeP5p0kvun/eftZ6InsOw+i7K9w3bv3H5ynut5WvXqjzdOpDH
+j/xA9LDlGR64XsD8jPKU3J/rvGClw/uqE1u+/rKeTBc+1Dz4WZH/+vwby325
+vv1C9CD84r7wB97azmYeAuE5/cQ+h5/EAdC3XN9+r+PRtjM8z9n/xY7muONv
+9gvsNzvubHl3Pov7N60TtP1uuyzSC1FeLYqzwgv7Ncy3tuOa6srMtyjuMmr/
+huUvfEQf8Vxreb114HultfzdVvrDeC0vyJX1DTxBfr1exfEe+AI/kH/0EYgd
+i9669P53vPfZr9xbeAr/4CW/R57pD/2jv5zn+JXjw+Yr/aT/jMd5HH7nOBXy
+ZD/E8yLybPsevvk+vj/j8XoE2zWWZ++TYbs92j/d84W/W+11wva/OM/5BvPY
+8RLPV1zX9pP7Yz/D8QL/zvaL8+SR3zJsfKnWT7tW+719QD9yfO3vjhYeYGc6
+voI8Iz/oSXgSxWngpesiaHOduv97BuoPOA6PHzj5lP4dBvjl+zsPihzDX/vJ
+XI95if57fJ4fHEfi+ozPdU7ROgCQ+3M+46Z/zDfwFTskei70l/F4HuW4+0mb
+39Nf57eiehDb0/bXvX+H542Ip/SP5x2tN7bejXgVzQu2q/m79bT9g1HzN/DZ
+84HtVD/3+nnuWNXP15e/W38iL/AIHiBfzqd6vl47P5ziL9ejX9yX+0V6xHLH
++0HObG9ynPPhA/2xX+vrgt7/xfz2uL1fovWI/Vju63mG54DfgN3BOGx3cD79
+5D05Ts34zWfvI+c8ldcneb/ISK+b17bDbXeY//SX8/x+7B943wDbtY6zmo8c
+d97Setb+fFN8zvez32E7wuPkefA+eJ/IQy1Xd5W8BX9nnkc+4Z/1jO1l+4fT
+8tPsRzFO5M161H6t9xWO9IL9fO873uQH2Q6jP/jh6FX0KX/nd66HZP70/qs8
+X/jPc7ad4fcFOl5pObLf43yC60dcRxL59Z4PvA+042I8d9v/TfV4TX6p/Vvr
+1WHjy54XXKfuOILtJp6n/VfkACTOAsJP9J+v5/iA/Ztpx0Gdn+I5We8gr5Yr
+xzH8vicVB3U8n+t4HrSdvzYOd3jADrX97Lg6bd6P/d7Inub3kX61PvbzNM9o
+2w5x3NR+b1RXZP5Fem/YuHmUv1pvHDiqn3Wdgv0UyxnPn/mZ94w8Y4fZLua9
+2n93fCKqr5h2npHzrBddz+t91bx/k+XFcjGpPJ7rTazf7GfAM4/LfsRaP2hp
+gB9ed2H+Rd/pi+w12022TzzfWS/6eXhe8/uN5se28qrRfTy/2C+wXeJ4t+05
+x3fhL3YY83yUn+C9uR9t1fG4LtLxcs9nrqOwvmjar3RctJ1lP8f5bc879M/5
+cftJUb2p60KjdUXeJ5152fab7XLPm44PuX+e59uuX5pUXVNkn0f7nJhf9l+c
+50Beo/12Qc5zfLCtOlnbHY4/RvacecF85jzkRvXf8WTbtdZffs7mna/rOFAU
+93E8yfaH60Oj+Lh57/XCUV19V+qEm/zfYdfnNNnp0fwGH52vR37t7zetV7C8
+tL1+wvMK42GcjpeaD11ZT2N5j/hnufd81XR95+ft39hftn0yKg+bjncdJ70+
+x/6785jE9Zz3cJ6E9+Hn3JV5LmrTT/uDjptiT9ju8DwX1XF2ZbyTel7Wr9ar
+zvd6HRQ4K3py3Pa463OMto94H95HwevKHbedlX0RLH9eH267zHFQ69PIf+26
+f7VejL4zH63jiPbTmBV52Wg/dtg4leNBrrdDzzjOj1y2ve/FqOsezC/b7Za7
+qI7P1zNP2x73tDCq54nqdd3uurx0FR1XdvzIeQLkeNQ4eVcQebHdGvnxzkfY
+Hnb8blr7OnYNm/KVUb3BrMlLV9H5rmi9N3poVudHy01Uzx19T8P16pFctj3O
+xPlE12k43oee2aw8t+fJWZPT6DvKtotdj+X6q0WxfxO7hdYf3u8sqq+Dp6yn
+nRXeup7K8SbGG9UrmOezMu7E+UDnY6N1x9Yj7M+C3NNuezyj8tb6Naq3S7s3
+sQs8RR6j+Cjy63wFepXjtEeto+0KRvWcXoeVfE3sAm9d7+O64yjvyL4Wzhu3
+Pa71YrRf2KLEfxO7jear18d6/XVU/+l6Dtd7tD3OUZ+H87Zt9ysx8f/l03Zx
+bd9uK/udbdZ6ZtepReuvsZPxb9OeTEwcH+FfvU7uFwPfkdm0+s/7yXjfU9rs
+E2X9O2vx5MTELiF2n/Ov7OdU709ww8B3xF0PZX8v9Wti4uSR+IrXrbs+b7P2
+VXJ90Lz4r4mJs4Dmm/cn8Ppk+Dhv8eHExC5jtN7M+ycY5y3/mpjYZYzyjNE6
+/3mrb0pMnCWEZ3wPoGk/mmh/mYz3JiZOH+s48E2lbph8q+t5Iv1q3rY9nsTE
+eUKvK4afxJH4jo73PYnq/RMTE6eHUZ5l7feulgfWd3rfnbbHkZi4CBjVM7gO
+0etSst49MbE9RM86vuTvldgeTv2amNgeX6N9jL3/2NrvpW0v2PY4EhMXCc3T
+Jv/W9nL9u52tjyMxcZHQ+vaR18VtK3mgtvudmLjI6H2F7d9mnjUxsbs46e9/
+JCYmnqgeBm9zTik=
+   "], {{0, 0}, {118, 73}}, {0, 0.48756218905472637`}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellChangeTimes->{3.6978106136861935`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"ImageSize", "->", "40"}], ",", 
+     RowBox[{"Mesh", "->", "True"}]}], "]"}], "&"}], "/@", 
+  RowBox[{"CellularAutomaton", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"224", ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "2", ",", "2"}], "}"}]}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}], ",", "0"}], "}"}],
+     ",", "8"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6978107159336157`*^9, 3.697810719896062*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[{
+     RasterBox[{{1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}, {0, 0, 0, 1, 1}, {1, 1, 0, 
+      1, 1}, {1, 0, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 1, 1, 1}, {1, 0, 1, 1, 1}, {1, 0, 0, 1, 1}, {0, 1, 0, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 1, 1, 1}, {1, 0, 0, 1, 1}, {0, 1, 0, 1, 1}, {1, 1, 0, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 1, 1, 1}, {1, 0, 0, 1, 1}, {1, 1, 0, 0, 1}, {1, 0, 1, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 1, 1, 1}, {1, 0, 0, 0, 1}, {1, 1, 1, 0, 1}, {1, 1, 0, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 0, 1, 1}, {1, 1, 0, 0, 1}, {1, 0, 1, 0, 1}, {1, 1, 1, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 0, 0, 1}, {1, 0, 1, 0, 1}, {1, 1, 1, 0, 1}, {1, 1, 1, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 0, 0, 1}, {1, 1, 1, 0, 0}, {1, 1, 0, 1, 1}, {1, 1, 1, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}], 
+   ",", 
+   GraphicsBox[{
+     RasterBox[{{1, 1, 0, 0, 0}, {1, 1, 1, 1, 0}, {1, 1, 1, 0, 1}, {1, 1, 1, 
+      1, 1}, {1, 1, 1, 1, 1}}, {{0, 0}, {5, 5}}, {0, 1}], {
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 5}, {5, 5}}, {{0, 4}, {5, 4}}, {{0, 3}, {5, 3}}, {{0, 
+         2}, {5, 2}}, {{0, 1}, {5, 1}}, {{0, 0}, {5, 0}}}],
+        Antialiasing->False]}, 
+      {GrayLevel[
+        NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+       StyleBox[
+        LineBox[{{{0, 0}, {0, 5}}, {{1, 0}, {1, 5}}, {{2, 0}, {2, 5}}, {{3, 
+         0}, {3, 5}}, {{4, 0}, {4, 5}}, {{5, 0}, {5, 5}}}],
+        Antialiasing->False]}}},
+    Frame->False,
+    FrameLabel->{None, None},
+    FrameTicks->{{None, None}, {None, None}},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->40,
+    Method->{
+     "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic}]}],
+   "}"}]], "Output",
+ CellChangeTimes->{{3.697810707700103*^9, 3.6978107202580843`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ArrayPlot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"CellularAutomaton", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"224", ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"2", ",", "2", ",", "2"}], "}"}]}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}], ",", "0"}], 
+        "}"}], ",", "10"}], "]"}], "[", 
+     RowBox[{"[", "gen", "]"}], "]"}], "\[IndentingNewLine]", "]"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"gen", ",", "1", ",", "10", ",", "1"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.697810723010898*^9, 3.69781077872375*^9}, {
+  3.697810821376998*^9, 3.6978108677025385`*^9}, {3.6978109076539803`*^9, 
+  3.6978109431634116`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`gen$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`gen$$], 1, 10, 1}}, Typeset`size$$ = {
+    360., {211., 217.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gen$12453$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`gen$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`gen$$, $CellContext`gen$12453$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ArrayPlot[
+        Part[
+         CellularAutomaton[{
+          224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, {1, 1}}, {{{0, 1, 0}, {
+           0, 0, 1}, {1, 1, 1}}, 0}, 10], $CellContext`gen$$]], 
+      "Specifications" :> {{$CellContext`gen$$, 1, 10, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {257., 264.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6978109231536226`*^9, 3.697810943544454*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CellularAutomaton", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"224", ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "2", ",", "2"}], "}"}]}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}], ",", "0"}], "}"}],
+     ",", "10"}], "]"}], "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.697810881845248*^9, 3.6978108862992225`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6978108797170362`*^9, 3.697810887381917*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"life", "[", 
+   RowBox[{"seed_", ",", "ini_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ArrayPlot", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"CellularAutomaton", "[", 
+       RowBox[{"seed", ",", "ini", ",", "i"}], "]"}], "[", 
+      RowBox[{"[", "gen", "]"}], "]"}], "\[IndentingNewLine]", "]"}], 
+    "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{"gen", ",", "1", ",", "i", ",", "1"}], "}"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.697810999494505*^9, 3.69781100863227*^9}, {
+  3.69781109307874*^9, 3.6978110956580687`*^9}, {3.6978113679731474`*^9, 
+  3.6978114017419243`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b3s23", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{"224", ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "2", ",", "2"}], "}"}]}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6978111350051374`*^9, 3.697811158290831*^9}, {
+  3.697811409420436*^9, 3.697811411563057*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"224", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2", ",", "2"}], "}"}]}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.697811158668392*^9, 3.697811411984194*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"glider", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}], ",", "0"}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.6978112920452766`*^9, 3.697811298039381*^9}, {
+  3.6978114257509274`*^9, 3.697811429461525*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}], ",", "0"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6978114300778036`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"life", "[", 
+  RowBox[{"b3s23", ",", "glider", ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6978114042410517`*^9, 3.697811420310954*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`gen$$ = 10, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`gen$$], 1, 10, 1}}, Typeset`size$$ = {
+    360., {211., 217.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gen$17260$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`gen$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`gen$$, $CellContext`gen$17260$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ArrayPlot[
+        Part[
+         CellularAutomaton[{
+          224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, {1, 1}}, {{{0, 1, 0}, {
+           0, 0, 1}, {1, 1, 1}}, 0}, 10], $CellContext`gen$$]], 
+      "Specifications" :> {{$CellContext`gen$$, 1, 10, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {257., 264.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6978114206799974`*^9, 3.697811432078148*^9}}]
+}, Open  ]]
+},
+WindowSize->{759, 697},
+WindowMargins->{{93, Automatic}, {50, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2490, 78, 107, "Input"],
+Cell[CellGroupData[{
+Cell[3073, 102, 388, 10, 30, "Input"],
+Cell[3464, 114, 5180, 90, 243, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8681, 209, 1144, 34, 69, "Input"],
+Cell[9828, 245, 8661, 219, 57, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18526, 469, 1494, 39, 145, "Input"],
+Cell[20023, 510, 1770, 36, 538, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21830, 551, 1013, 30, 50, "Input"],
+Cell[22846, 583, 658, 16, 30, "Output"]
+}, Open  ]],
+Cell[23519, 602, 738, 17, 126, "Input"],
+Cell[CellGroupData[{
+Cell[24282, 623, 613, 17, 30, "Input"],
+Cell[24898, 642, 511, 15, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25446, 662, 490, 14, 30, "Input"],
+Cell[25939, 678, 368, 12, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26344, 695, 168, 3, 30, "Input"],
+Cell[26515, 700, 1771, 36, 538, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
