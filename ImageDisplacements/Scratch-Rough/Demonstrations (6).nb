@@ -1,0 +1,274 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10761,        266]
+NotebookOptionsPosition[     10376,        248]
+NotebookOutlinePosition[     10722,        263]
+CellTagsIndexPosition[     10679,        260]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"displacement", " ", "=", " ", 
+   RowBox[{"images", "\[Function]", " ", 
+    RowBox[{"Mean", "@", 
+     RowBox[{"ImageDisplacements", "[", "images", "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"listCurl", "=", "\[IndentingNewLine]", 
+   RowBox[{"flow", "  ", "\[Function]", " ", 
+    RowBox[{
+     RowBox[{"ListConvolve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"0.5`", ",", "0", ",", 
+          RowBox[{"-", "0.5`"}]}], "}"}], "}"}], ",", 
+       RowBox[{"flow", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "All", ",", "2"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "2"}], "}"}]}], "}"}], ",", "\"\<Fixed\>\""}], 
+      "]"}], "-", 
+     RowBox[{"ListConvolve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"-", "0.5`"}], "}"}], ",", 
+         RowBox[{"{", "0.`", "}"}], ",", 
+         RowBox[{"{", "0.5`", "}"}]}], "}"}], ",", 
+       RowBox[{"flow", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "All", ",", "1"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "2"}], "}"}]}], "}"}], ",", "\"\<Fixed\>\""}], 
+      "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curl", " ", "=", " ", 
+   RowBox[{"displacement", " ", "\[Function]", 
+    RowBox[{"ImageAdjust", "@", 
+     RowBox[{"Image", "@", 
+      RowBox[{"GaussianFilter", "[", 
+       RowBox[{
+        RowBox[{"listCurl", "@", "displacement"}], ",", 
+        RowBox[{"10", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "1"}], "}"}]}]}], "]"}]}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curlImage", " ", "=", " ", 
+   RowBox[{"images", " ", "\[Function]", 
+    RowBox[{"curl", "[", 
+     RowBox[{"displacement", "[", "images", "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curlHighlight", " ", "=", " ", 
+   RowBox[{"images", "\[Function]", 
+    RowBox[{"ImageCompose", "[", 
+     RowBox[{
+      RowBox[{"images", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"SetAlphaChannel", "[", 
+       RowBox[{
+        RowBox[{"Colorize", "[", 
+         RowBox[{
+          RowBox[{"curlImage", "[", "images", "]"}], ",", 
+          RowBox[{"ColorFunction", "\[Rule]", 
+           RowBox[{"ColorData", "[", 
+            RowBox[{"{", 
+             RowBox[{"\"\<TemperatureMap\>\"", ",", "\"\<Reverse\>\""}], 
+             "}"}], "]"}]}]}], "]"}], ",", 
+        RowBox[{"ColorNegate", "[", 
+         RowBox[{"curlImage", "[", "images", "]"}], "]"}]}], "]"}]}], 
+     "]"}]}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.69306360793439*^9, 3.693063640133524*^9}, {
+   3.6930636988557014`*^9, 3.693063755921414*^9}, {3.6930639834431667`*^9, 
+   3.6930639945408373`*^9}, {3.6930640460360184`*^9, 3.693064067658843*^9}, {
+   3.6930642392062087`*^9, 3.693064363287943*^9}, {3.693064441103225*^9, 
+   3.693064457993535*^9}, {3.6931443065503893`*^9, 3.6931443162160044`*^9}, {
+   3.6931445567498846`*^9, 3.693144588467412*^9}, {3.693144773943471*^9, 
+   3.693144779238271*^9}, {3.693144965824257*^9, 3.693144968193769*^9}, 
+   3.693146798570492*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["`o"], "Input",
+ CellChangeTimes->{{3.6931468863306913`*^9, 3.693146983163599*^9}, {
+  3.6931470479975157`*^9, 3.6931471402141438`*^9}, {3.693147193701479*^9, 
+  3.6931471975801954`*^9}, {3.6931472910946217`*^9, 3.693147298900758*^9}, {
+  3.693147615299814*^9, 3.6931476156191635`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`displayType$$ = 1, $CellContext`imageSet$$ =
+     1, $CellContext`originalImages$$ = True, $CellContext`\[Theta]$$ = 
+    0.21362830044410594`, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`imageSet$$], 1, "image set"}, {
+      1 -> "opposite tower sides", 2 -> "rotating image"}}, {{
+       Hold[$CellContext`displayType$$], 1, "difference display"}, {
+      1 -> "highlight differences", 2 -> "map differences"}}, {
+      Hold["        "], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`originalImages$$], True, "original image"}, {
+      True, False}}, {{
+       Hold[$CellContext`originalImages$$], True, "original images"}}, {
+      Hold[
+       Dynamic[
+        If[$CellContext`displayType$$ == 1, 
+         Manipulate`Place[1], 
+         Manipulate`Place[2]]]], Manipulate`Dump`ThisIsNotAControl}, {
+      Hold[$CellContext`\[Theta]$$], 0, 2 Pi}, {
+      Hold[$CellContext`\[Theta]$$]}, {
+      Hold[
+       Dynamic[
+        If[$CellContext`imageSet$$ == 2, 
+         Manipulate`Place[3], 
+         Manipulate`Place[4]]]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {600., {73., 79.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`imageSet$11379$$ = 
+    False, $CellContext`displayType$11380$$ = 
+    False, $CellContext`originalImages$11381$$ = 
+    False, $CellContext`\[Theta]$11382$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`displayType$$ = 1, $CellContext`imageSet$$ = 
+        1, $CellContext`originalImages$$ = True, $CellContext`\[Theta]$$ = 0},
+       "ControllerVariables" :> {
+        Hold[$CellContext`imageSet$$, $CellContext`imageSet$11379$$, False], 
+        Hold[$CellContext`displayType$$, $CellContext`displayType$11380$$, 
+         False], 
+        Hold[$CellContext`originalImages$$, \
+$CellContext`originalImages$11381$$, False], 
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$11382$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ({
+         If[$CellContext`imageSet$$ == 
+          1, $CellContext`usedImages = Map[ImageResize[
+              ExampleData[{"TestImageSet", #}], {200, 152}]& , {
+             "Oxford2011_04", "Oxford2011_11"}]; 
+          Null, $CellContext`usedImages = {
+             ImageResize[
+              ExampleData[{"TestImageSet", "Oxford2011_10"}], {200, 152}], 
+             ImageResize[
+              ImageRotate[
+               
+               ExampleData[{
+                "TestImageSet", "Oxford2011_10"}], $CellContext`\[Theta]$$], {
+              200, 152}]}; Null], 
+         If[
+          And[$CellContext`displayType$$ == 1, 
+           Not[$CellContext`originalImages$$]], $CellContext`firstImage = {
+           Nothing}, 
+          
+          If[$CellContext`displayType$$ == 2, $CellContext`firstImage = 
+           Part[$CellContext`usedImages, 1], $CellContext`firstImage = 
+           ImageAssemble[{
+              Part[$CellContext`usedImages, 1], 
+              Part[$CellContext`usedImages, 2]}]]], 
+         If[$CellContext`displayType$$ == 2, $CellContext`secondImage = 
+          Part[$CellContext`usedImages, 
+            2], $CellContext`secondImage = \
+$CellContext`curlHighlight[$CellContext`usedImages]]}; Show[
+         ImageAssemble[
+          Flatten[{$CellContext`firstImage, $CellContext`secondImage}]], 
+         If[$CellContext`displayType$$ == 2, 
+          Graphics[{Green, 
+            PointSize[0.01], 
+            Arrowheads[0.01], 
+            MapThread[If[#2 === Missing[], {Cyan, 
+               Point[#]}, 
+              Arrow[{#, #2 + {
+                  Part[
+                   ImageDimensions[
+                    Part[$CellContext`usedImages, 1]], 1], 0}}]]& , 
+             ImageFeatureTrack[{
+               Part[$CellContext`usedImages, 1], 
+               Part[$CellContext`usedImages, 2]}]]}], {Nothing}]]), 
+      "Specifications" :> {{{$CellContext`imageSet$$, 1, "image set"}, {
+         1 -> "opposite tower sides", 2 -> "rotating image"}, ControlType -> 
+         PopupMenu}, {{$CellContext`displayType$$, 1, "difference display"}, {
+         1 -> "highlight differences", 2 -> "map differences"}}, 
+        "        ", {{$CellContext`originalImages$$, True, 
+          "original image"}, {True, False}, ControlPlacement -> 
+         1}, {{$CellContext`originalImages$$, True, "original images"}, 
+         ControlType -> None, ControlPlacement -> 2}, 
+        Dynamic[
+         If[$CellContext`displayType$$ == 1, 
+          Manipulate`Place[1], 
+          Manipulate`Place[2]]], {$CellContext`\[Theta]$$, 0, 2 Pi, 
+         ControlPlacement -> 3}, {$CellContext`\[Theta]$$, ControlType -> 
+         None, ControlPlacement -> 4}, 
+        Dynamic[
+         If[$CellContext`imageSet$$ == 2, 
+          Manipulate`Place[3], 
+          Manipulate`Place[4]]]}, "Options" :> {ContentSize -> {625, 175}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{645., {154., 161.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.693146814688669*^9, 3.693146819148811*^9}, {
+   3.693146913954749*^9, 3.693146987153964*^9}, {3.6931470740975533`*^9, 
+   3.693147140752514*^9}, 3.6931471987634497`*^9}]
+}, Open  ]]
+},
+WindowSize->{1520, 805},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3454, 91, 142, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[4037, 115, 299, 4, 30, "Input"],
+Cell[4339, 121, 6021, 124, 332, "Output"]
+}, Open  ]]
+}
+]
+*)
+
